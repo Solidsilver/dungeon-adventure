@@ -1,5 +1,7 @@
+import java.io.Serializable;
+
 import dungeon.Dungeon;
-public class Game {
+public class Game implements Serializable {
     private Dungeon dungeon;
     private PlayerController pController;
 
@@ -7,4 +9,5 @@ public class Game {
         this.dungeon = new Dungeon();
         this.pController = new PlayerController();
     }
+
 }

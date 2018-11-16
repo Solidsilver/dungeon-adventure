@@ -1,5 +1,7 @@
 package dungeon;
 
-public class Dungeon {
+import java.io.Serializable;
+
+public class Dungeon implements Serializable {
     
 }

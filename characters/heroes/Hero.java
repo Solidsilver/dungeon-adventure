@@ -1,9 +1,11 @@
 package characters.heroes;
 
 import characters.DungeonCharacter;
+
+import java.io.Serializable;
 import java.util.Scanner;
 
-public abstract class Hero extends DungeonCharacter {
+public abstract class Hero extends DungeonCharacter implements Serializable {
 	protected String specialActionName;
 	protected double chanceToBlock;
 	protected int numTurns;
