@@ -1,4 +1,4 @@
-package dungeon.characters;
+package base_code.mattfeldL-refactor.dungeon.characters;
 /**
  * Description: Abstract Base class for inheritance hierarchy for characters
 */

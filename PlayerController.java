@@ -5,6 +5,5 @@ public class PlayerController {
 
     public PlayerController() {
         HeroFactory hf = new HeroFactory();
-        this.hero = hf.createHero("Warrior");
     }
 }

@@ -1,5 +1,5 @@
-package dungeon.characters.monsters;
-import dungeon.characters.DungeonCharacter;
+package base_code.mattfeldL-refactor.dungeon.characters.monsters;
+import base_code.mattfeldL-refactor.dungeon.characters.DungeonCharacter;
 
 public class Skeleton extends Monster
 {

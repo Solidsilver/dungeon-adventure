@@ -1,4 +1,4 @@
-package characters;
+package base_code.JHowes-HW5-Refactor.Refactored_code.characters;
 
 import java.util.Scanner;
 

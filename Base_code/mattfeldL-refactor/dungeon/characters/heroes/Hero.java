@@ -1,4 +1,4 @@
-package dungeon.characters.heroes;
+package base_code.mattfeldL-refactor.dungeon.characters.heroes;
 
 import dungeon.characters.DungeonCharacter;
 import java.util.Scanner;
