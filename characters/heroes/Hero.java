@@ -1,11 +1,9 @@
 package characters.heroes;
 
 import characters.DungeonCharacter;
-
-import java.io.Serializable;
 import java.util.Scanner;
 
-public abstract class Hero extends DungeonCharacter implements Serializable {
+public abstract class Hero extends DungeonCharacter {
 	protected String specialActionName;
 	protected double chanceToBlock;
 	protected int numTurns;
@@ -81,5 +79,9 @@ public abstract class Hero extends DungeonCharacter implements Serializable {
 		} while(numTurns > 0);
 
 	}// end battleChoices
+
+	public String getName() {
+		return super.getName();
+	}
 
 }// end Hero class

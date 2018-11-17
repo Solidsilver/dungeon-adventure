@@ -1,6 +1,5 @@
 package characters.heroes;
 import characters.DungeonCharacter;
-
 import java.util.Scanner;
 
 public class Warrior extends Hero

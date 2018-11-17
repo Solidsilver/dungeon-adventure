@@ -10,4 +10,8 @@ public class Game implements Serializable {
         this.pController = new PlayerController();
     }
 
+    public String toString() {
+        return "Dungeon" + dungeon + "PController: " + pController;
+    }
+
 }

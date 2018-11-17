@@ -8,4 +8,8 @@ public class PlayerController implements Serializable {
         HeroFactory hf = new HeroFactory();
         this.hero = hf.createHero("warrior");
     }
+
+    public String toString() {
+        return "Hero: " + hero.getName();
+    }
 }

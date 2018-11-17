@@ -1,9 +1,10 @@
 package characters;
+import java.io.Serializable;
 /**
  * Description: Abstract Base class for inheritance hierarchy for characters
 */
 
-public abstract class DungeonCharacter
+public abstract class DungeonCharacter implements Serializable
 {
 
 	protected String characterName;

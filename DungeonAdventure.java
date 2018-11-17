@@ -1,10 +1,31 @@
 import java.io.*;
+import java.util.Scanner;
 
 public class DungeonAdventure {
-	private Game game;
 
 	public static void main(String[] args) {
+		Scanner kb = new Scanner(System.in);
+		String ng = "";
+		Game game = null;
+		do {
+			System.out.print("New Game? (y/n): ");
+			ng = kb.nextLine();
+		} while (ng.compareTo("y") != 0 && ng.compareTo("n") != 0);
+		switch (ng) {
+			case "y":
+				game = newGame();
+				break;
+			case "n":
+				game = loadGame();
+				break;
+		
+			default:
+				break;
+		}
+		System.out.println("Current Game:\n" + game);
 
+		saveGame(game);
+		System.out.println("Exiting, game saved");
 	}
 
 	private static Game loadGame() {
@@ -14,9 +35,9 @@ public class DungeonAdventure {
 	private static Game loadGame(String saveName) {
 		Game gme = null;
 		try {
-			FileInputStream fin = new FileInputStream(System.getProperty("user.dir") + "/saves/" + saveName);
+			FileInputStream fin = new FileInputStream(System.getProperty("user.dir") + "/saves/" + saveName + ".dga");
 			ObjectInputStream gameIn = new ObjectInputStream(fin);
-			gme = (Game) gameIn.readObject();
+			gme = (Game)gameIn.readObject();
 			gameIn.close();
 			fin.close();
 		} catch (IOException i) {
@@ -31,7 +52,7 @@ public class DungeonAdventure {
 	}
 
 	private static Game newGame() {
-		return null;
+		return new Game();
 	}
 
 	public static void saveGame(Game gme) {
