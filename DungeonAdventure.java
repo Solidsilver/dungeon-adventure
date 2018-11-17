@@ -22,8 +22,8 @@ public class DungeonAdventure {
 			default:
 				break;
 		}
-		System.out.println("Current Game:\n" + game);
-
+		//System.out.println("Current Game:\n" + game);
+		game.start();
 		saveGame(game);
 		System.out.println("Exiting, game saved");
 	}
