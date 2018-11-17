@@ -1,12 +1,16 @@
 package characters.heroes;
 
 import characters.DungeonCharacter;
+
 import java.util.Scanner;
+import pickups.*;
+import java.util.ArrayList;
 
 public abstract class Hero extends DungeonCharacter {
 	protected String specialActionName;
 	protected double chanceToBlock;
 	protected int numTurns;
+	protected ArrayList<PickupItem> inventory;
 
 	// -----------------------------------------------------------------
 	// calls base constructor and gets name of hero from user
@@ -17,6 +21,7 @@ public abstract class Hero extends DungeonCharacter {
 		//System.out.println("Assigning special: " + special);
 		this.specialActionName = special;
 		readName();
+		this.inventory = new ArrayList<>();
 	}
 
 	public void readName() {
@@ -25,6 +30,21 @@ public abstract class Hero extends DungeonCharacter {
 		super.setName(kb.nextLine());
 	}// end readName method
 
+	public void addToInventory(PickupItem p) {
+		this.inventory.add(p);
+	}
+
+	public void useInventoryItem(int index) {
+		this.inventory.get(index).use();
+	}
+
+	public ArrayList<String> inventoryToString() {
+		ArrayList<String> invStr = new ArrayList<>();
+		for (PickupItem p: this.inventory) {
+			invStr.add(p.toString());
+		}
+		return invStr;
+	}
 	
 	public boolean defend() {
 		return Math.random() <= chanceToBlock;

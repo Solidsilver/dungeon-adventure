@@ -3,20 +3,54 @@ import java.io.*;
 import java.util.Scanner;
 
 public class PlayerController implements Serializable {
+    private static final long serialVersionUID = 2L;
     private Hero hero;
+    private Game game;
 
-    public PlayerController() {
-        HeroFactory hf = new HeroFactory();
-        this.hero = hf.createHero("warrior");
+    public PlayerController(Game game) {
+        this.hero = initHero();
+        this.game = game;
     }
 
-    public void playTurn() {
-        Scanner kb = new Scanner(System.in);
-        int ip = 0;
-        System.out.println("Playing turn\nSay hi? (1/0): ");
-        ip = Integer.parseInt(kb.nextLine());
-        if (ip == 1) {
-            System.out.println(this.hero.getName() + " says hi!");
+    private Hero initHero() {
+        Menu heroSelection = new Menu("Characters", "Warrior", "Theif", "Sorceress");
+        HeroFactory hf = new HeroFactory();
+        int choice = heroSelection.getSelection();
+        return hf.createHero(choice);
+    }
+
+    public boolean playTurn() {
+        Menu mnu = new Menu("Play", "Change Room", "Inventory", "Save Game", "Exit");
+        int choice = mnu.getSelection();
+
+        switch (choice) {
+            case 0:
+                changeRoom();
+                break;
+            case 1:
+                inventory();
+                break;
+            case 2:
+                DungeonAdventure.saveGame(this.game);
+                break;
+            case 3:
+                return false;
+            default:
+                break;
+        }
+        return true;
+    }
+
+    private void changeRoom() {
+        Menu mnu;
+    }
+
+    private void inventory() {
+        Menu mnu = new Menu(this.hero.getName() + "'s Inventory", this.hero.inventoryToString());
+        mnu.addChoiceFirst("Back");
+        int choice = mnu.getSelection();
+        if (choice > 0) {
+            this.hero.useInventoryItem(choice - 1);
         }
     }
 

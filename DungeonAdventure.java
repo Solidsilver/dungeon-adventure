@@ -3,29 +3,37 @@ import java.util.Scanner;
 
 public class DungeonAdventure {
 
+	private static final String mainMenu = "\t***** Dungeon Adventure *****\n" + 
+										"1) New Game\t	2) Load Save\n" +
+										"0) Exit\n~> ";
+
 	public static void main(String[] args) {
-		Scanner kb = new Scanner(System.in);
-		String ng = "";
-		Game game = null;
-		do {
-			System.out.print("New Game? (y/n): ");
-			ng = kb.nextLine();
-		} while (ng.compareTo("y") != 0 && ng.compareTo("n") != 0);
-		switch (ng) {
-			case "y":
+		Game game;
+		Menu mm = new Menu("***** Dungeon Adventure *****", "New Game", "Load Save", "Exit");
+		int menuChoice = mm.getSelection();
+		switch (menuChoice) {
+			case 0:
 				game = newGame();
 				break;
-			case "n":
+			case 1:
 				game = loadGame();
 				break;
-		
+			case 2:
+				game = null;
 			default:
+				game = null;
 				break;
 		}
-		//System.out.println("Current Game:\n" + game);
-		game.start();
-		saveGame(game);
-		System.out.println("Exiting, game saved");
+		if (game != null) {
+			game.start();
+		}
+		System.out.println("Come again soon!");
+	}
+
+	private static int printMainMenu() {
+		Scanner kb = new Scanner(System.in);
+		System.out.print(mainMenu);
+		return Integer.parseInt(kb.nextLine());
 	}
 
 	private static Game loadGame() {
@@ -35,11 +43,16 @@ public class DungeonAdventure {
 	private static Game loadGame(String saveName) {
 		Game gme = null;
 		try {
-			FileInputStream fin = new FileInputStream(System.getProperty("user.dir") + "/saves/" + saveName + ".dga");
-			ObjectInputStream gameIn = new ObjectInputStream(fin);
-			gme = (Game)gameIn.readObject();
-			gameIn.close();
-			fin.close();
+			File fin = new File(System.getProperty("user.dir") + "/saves/" + saveName + ".dga");
+			if (!fin.exists()) {
+				System.out.println("Save " + saveName + " does not exist");
+			} else {
+				FileInputStream FisIn = new FileInputStream(fin);
+				ObjectInputStream gameIn = new ObjectInputStream(FisIn);
+				gme = (Game)gameIn.readObject();
+				gameIn.close();
+				FisIn.close();
+			}
 		} catch (IOException i) {
 			System.out.println("Error reading file");
 			i.printStackTrace();
@@ -47,7 +60,6 @@ public class DungeonAdventure {
 			System.out.println("Game class not found");
 			c.printStackTrace();
 		}
-
 		return gme;
 	}
 

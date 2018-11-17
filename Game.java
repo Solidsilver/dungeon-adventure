@@ -15,7 +15,7 @@ public class Game implements Serializable {
     private void init() {
         if (this.dungeon == null && this.pController == null) {
             this.dungeon = new Dungeon();
-            this.pController = new PlayerController();
+            this.pController = new PlayerController(this);
         }
     }
 
@@ -32,8 +32,8 @@ public class Game implements Serializable {
     }
 
     private void playGame() {
-        while (!isGameOver()) {
-            pController.playTurn();
+        while (pController.playTurn()) {
+            //pController.playTurn();
         }
     }
 
@@ -43,6 +43,10 @@ public class Game implements Serializable {
 
     public String toString() {
         return "Dungeon" + dungeon + "PController: " + pController;
+    }
+
+    public void saveCurrent() {
+        DungeonAdventure.saveGame(this);
     }
 
 }
