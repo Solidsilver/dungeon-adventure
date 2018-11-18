@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class DungeonAdventure {
 	public static void main(String[] args) {
-		Game game;
+		Game game = null;
 		int menuChoice = -1;
 		Menu mm = new Menu("***** Dungeon Adventure *****", "New Game", "Resume Game", "Load Save", "Exit");
 		do {
@@ -19,14 +19,15 @@ public class DungeonAdventure {
 				} else {
 					System.out.println("No game to resume");
 				}
+				break;
 			case 2:
 				game = loadGame();
 				break;
 			case 3:
 				game = null;
+				break;
 			default:
 				game = null;
-				break;
 			}
 			if (game != null) {
 				game.start();
