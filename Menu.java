@@ -34,12 +34,15 @@ public class Menu {
     }
 
     private void print(int columns) {
+        if (columns <= 0) {
+            throw new IllegalArgumentException("Number of columns must be > 0, was " + columns);
+        }
         System.out.println("\t" + this.menuName);
-        int x = 0;
+        int x = 1;
         //Iterator<String> itr = options.iterator();
         for (String str: this.options) {
-            System.out.print(x + ") " + str + "\t");
-            if (x == columns - 1) {
+            System.out.print((x-1) + ") " + str + "\t");
+            if (x%columns == 0 && x < this.options.size()) {
                 System.out.println();
             }
             x++;
@@ -48,9 +51,13 @@ public class Menu {
     }
 
     public int getSelection() {
+        return getSelection(2);
+    }
+
+    public int getSelection(int columns) {
         int selected = -1;
         do {
-            this.print();
+            print(columns);
             System.out.print("~> ");
             try {
                 selected = Integer.parseInt(kbIn.nextLine());
@@ -60,6 +67,10 @@ public class Menu {
             
         } while (selected < 0 || selected >= this.options.size());
         return selected;
+    }
+
+    public boolean isLast(int menuOption) {
+        return menuOption == (this.options.size() - 1);
     }
     
 }

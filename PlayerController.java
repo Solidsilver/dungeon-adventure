@@ -13,14 +13,14 @@ public class PlayerController implements Serializable {
     }
 
     private Hero initHero() {
-        Menu heroSelection = new Menu("Characters", "Warrior", "Theif", "Sorceress");
+        Menu heroSelection = new Menu("Choose a Character:", "Warrior", "Theif", "Sorceress");
         HeroFactory hf = new HeroFactory();
         int choice = heroSelection.getSelection();
         return hf.createHero(choice);
     }
 
     public boolean playTurn() {
-        Menu mnu = new Menu("Play", "Change Room", "Inventory", "Save Game", "Exit");
+        Menu mnu = new Menu("~~~Play~~~", "Change Room", "Inventory", "Save Game", "Exit");
         int choice = mnu.getSelection();
 
         switch (choice) {
@@ -34,6 +34,7 @@ public class PlayerController implements Serializable {
                 DungeonAdventure.saveGame(this.game);
                 break;
             case 3:
+                this.game.gameOver();
                 return false;
             default:
                 break;
@@ -47,9 +48,9 @@ public class PlayerController implements Serializable {
 
     private void inventory() {
         Menu mnu = new Menu(this.hero.getName() + "'s Inventory", this.hero.inventoryToString());
-        mnu.addChoiceFirst("Back");
+        mnu.addChoice("Back");
         int choice = mnu.getSelection();
-        if (choice > 0) {
+        if (!mnu.isLast(choice)) {
             this.hero.useInventoryItem(choice - 1);
         }
     }

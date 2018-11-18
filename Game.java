@@ -2,10 +2,12 @@ import java.io.Serializable;
 import java.util.Random;
 
 import dungeon.Dungeon;
+
 public class Game implements Serializable {
     private static final long serialVersionUID = 1L;
     private Dungeon dungeon;
     private PlayerController pController;
+    private boolean isGameOver;
 
     public void start() {
         init();
@@ -18,23 +20,31 @@ public class Game implements Serializable {
             this.dungeon = new Dungeon();
             this.pController = new PlayerController(this);
         }
+        this.isGameOver = false;
     }
 
     private boolean isGameOver() {
-        Random rnd = new Random();
-        int again = rnd.nextInt(20);
-        switch (again) {
+        if (this.isGameOver) {
+            Random rnd = new Random();
+            int again = rnd.nextInt(20);
+            switch (again) {
             case 3:
-                return true;        
+                this.isGameOver = true;
             default:
                 break;
+            }
         }
-        return false;
+
+        return this.isGameOver;
+    }
+
+    public void gameOver() {
+        this.isGameOver = true;
     }
 
     private void playGame() {
         while (pController.playTurn()) {
-            //pController.playTurn();
+            // pController.playTurn();
         }
     }
 

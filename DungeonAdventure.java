@@ -1,32 +1,51 @@
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DungeonAdventure {
 	public static void main(String[] args) {
 		Game game;
-		Menu mm = new Menu("***** Dungeon Adventure *****", "New Game", "Load Save", "Exit");
-		int menuChoice = mm.getSelection();
-		switch (menuChoice) {
+		int menuChoice = -1;
+		Menu mm = new Menu("***** Dungeon Adventure *****", "New Game", "Resume Game", "Load Save", "Exit");
+		do {
+			menuChoice = mm.getSelection();
+			switch (menuChoice) {
 			case 0:
 				game = newGame();
 				break;
 			case 1:
+				if (getSaveList().contains("last_saved")) {
+					game = loadGameDefault();
+				} else {
+					System.out.println("No game to resume");
+				}
+			case 2:
 				game = loadGame();
 				break;
-			case 2:
+			case 3:
 				game = null;
 			default:
 				game = null;
 				break;
-		}
-		if (game != null) {
-			game.start();
-		}
+			}
+			if (game != null) {
+				game.start();
+			}
+		} while (!mm.isLast(menuChoice));
 		System.out.println("Come again soon!");
 	}
 
 	private static Game loadGame() {
-		return loadGame("last_saved");
+		Scanner kb = new Scanner(System.in);
+		ArrayList<String> saves = getSaveList();
+		Menu mnu = new Menu("Saves", saves);
+		mnu.addChoice("Back");
+		int loadSave = mnu.getSelection(1);
+		if (!mnu.isLast(loadSave)) {
+			return loadGame(saves.get(loadSave));
+		}
+		return null;
+
 	}
 
 	private static Game loadGame(String saveName) {
@@ -38,7 +57,7 @@ public class DungeonAdventure {
 			} else {
 				FileInputStream FisIn = new FileInputStream(fin);
 				ObjectInputStream gameIn = new ObjectInputStream(FisIn);
-				gme = (Game)gameIn.readObject();
+				gme = (Game) gameIn.readObject();
 				gameIn.close();
 				FisIn.close();
 			}
@@ -52,19 +71,35 @@ public class DungeonAdventure {
 		return gme;
 	}
 
+	private static Game loadGameDefault() {
+		return loadGame("last_saved");
+	}
+
+	private static ArrayList<String> getSaveList() {
+		File fin = new File(System.getProperty("user.dir") + "/saves");
+		ArrayList<String> saves = new ArrayList<>();
+		for (String s : fin.list()) {
+			saves.add(s.substring(0, s.length() - 4));
+		}
+		return saves;
+	}
+
 	private static Game newGame() {
 		return new Game();
 	}
 
-	public static void saveGame(Game gme) {
-		saveGame(gme, "last_saved");
+	public static void saveGame(Game game) {
+		Scanner kb = new Scanner(System.in);
+		System.out.print("Save game:\nSave name: ");
+		saveGame(game, kb.nextLine());
 	}
 
-	private static void saveGame(Game gme, String saveName) {
+	private static void saveGame(Game game, String saveName) {
 		try {
-			FileOutputStream fout = new FileOutputStream(System.getProperty("user.dir") + "/saves/" + saveName + ".dga");
+			FileOutputStream fout = new FileOutputStream(
+					System.getProperty("user.dir") + "/saves/" + saveName + ".dga");
 			ObjectOutputStream saveOut = new ObjectOutputStream(fout);
-			saveOut.writeObject(gme);
+			saveOut.writeObject(game);
 			saveOut.close();
 			fout.close();
 			System.out.println("Game Saved");
@@ -73,6 +108,10 @@ public class DungeonAdventure {
 			i.printStackTrace();
 		}
 
+	}
+
+	public static void saveGameDefault(Game game) {
+		saveGame(game, "last_saved");
 	}
 
 	private static void startGame(Game gme) {
