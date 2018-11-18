@@ -11,7 +11,7 @@ public class HeroFactory {
         types.add("Sorceress");
     }
     public Hero createHero(String type) {
-        Hero newHero;
+        //Hero newHero;
         type = type.toLowerCase();
         type = type.substring(0, 1).toUpperCase() + type.substring(1);
         return createHero(this.types.indexOf(type));

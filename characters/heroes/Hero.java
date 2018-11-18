@@ -7,6 +7,7 @@ import pickups.*;
 import java.util.ArrayList;
 
 public abstract class Hero extends DungeonCharacter {
+	private static final long serialVersionUID = 1L;
 	protected String specialActionName;
 	protected double chanceToBlock;
 	protected int numTurns;

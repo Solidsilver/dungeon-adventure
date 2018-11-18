@@ -2,11 +2,6 @@ import java.io.*;
 import java.util.Scanner;
 
 public class DungeonAdventure {
-
-	private static final String mainMenu = "\t***** Dungeon Adventure *****\n" + 
-										"1) New Game\t	2) Load Save\n" +
-										"0) Exit\n~> ";
-
 	public static void main(String[] args) {
 		Game game;
 		Menu mm = new Menu("***** Dungeon Adventure *****", "New Game", "Load Save", "Exit");
@@ -28,12 +23,6 @@ public class DungeonAdventure {
 			game.start();
 		}
 		System.out.println("Come again soon!");
-	}
-
-	private static int printMainMenu() {
-		Scanner kb = new Scanner(System.in);
-		System.out.print(mainMenu);
-		return Integer.parseInt(kb.nextLine());
 	}
 
 	private static Game loadGame() {

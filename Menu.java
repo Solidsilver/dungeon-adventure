@@ -36,7 +36,7 @@ public class Menu {
     private void print(int columns) {
         System.out.println("\t" + this.menuName);
         int x = 0;
-        Iterator<String> itr = options.iterator();
+        //Iterator<String> itr = options.iterator();
         for (String str: this.options) {
             System.out.print(x + ") " + str + "\t");
             if (x == columns - 1) {
