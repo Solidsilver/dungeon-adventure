@@ -20,26 +20,29 @@ public class Menu {
         this.kbIn = new Scanner(System.in);
     }
 
-    public void addChoice(String choice) {
+    public void add(String choice) {
         this.options.add(choice);
     }
 
-    public void addChoiceFirst(String choice) {
+    public void addFirst(String choice) {
         this.options.add(0, choice);
     }
 
-    public void print() {
-        this.print(2);
+    private void printTitle() {
+        System.out.println("\t" + this.menuName);
+    }
+
+    public void printDefault() {
+        this.printVert(2);
         
     }
 
-    private void print(int columns) {
+    public void print(int columns) {
         if (columns <= 0) {
             throw new IllegalArgumentException("Number of columns must be > 0, was " + columns);
         }
-        System.out.println("\t" + this.menuName);
+        printTitle();
         int x = 1;
-        //Iterator<String> itr = options.iterator();
         for (String str: this.options) {
             System.out.print((x-1) + ") " + str + "\t");
             if (x%columns == 0 && x < this.options.size()) {
@@ -50,14 +53,36 @@ public class Menu {
         System.out.println();
     }
 
-    public int getSelection() {
+    public void printVert(int columns) {
+        if (columns <= 0) {
+            throw new IllegalArgumentException("Number of columns must be > 0, was " + columns);
+        }
+        System.out.println("\t" + this.menuName);
+        int rows = this.options.size()/columns + 1;
+        for (int y = 0; y < rows; y++) {
+            for (int x = y, i = 0; (i < columns) && (x < this.options.size()); x += rows, i++) {
+                System.out.print(x + ") " + this.options.get(x) + "\t");
+            }
+            System.out.println();
+        }
+    }
+
+    public int getSelectionDefault() {
         return getSelection(2);
     }
 
     public int getSelection(int columns) {
+        return getSelection(columns, true);
+    }
+
+    public int getSelection(int columns, boolean printVertical) {
         int selected = -1;
         do {
-            print(columns);
+            if (printVertical) {
+                printVert(columns);
+            } else {
+                print(columns);
+            }
             System.out.print("~> ");
             try {
                 selected = Integer.parseInt(kbIn.nextLine());

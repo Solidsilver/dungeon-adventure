@@ -8,7 +8,7 @@ public class DungeonAdventure {
 		int menuChoice = -1;
 		Menu mm = new Menu("***** Dungeon Adventure *****", "New Game", "Resume Game", "Load Save", "Exit");
 		do {
-			menuChoice = mm.getSelection();
+			menuChoice = mm.getSelectionDefault();
 			switch (menuChoice) {
 			case 0:
 				game = newGame();
@@ -40,7 +40,7 @@ public class DungeonAdventure {
 		Scanner kb = new Scanner(System.in);
 		ArrayList<String> saves = getSaveList();
 		Menu mnu = new Menu("Saves", saves);
-		mnu.addChoice("Back");
+		mnu.add("Back");
 		int loadSave = mnu.getSelection(1);
 		if (!mnu.isLast(loadSave)) {
 			return loadGame(saves.get(loadSave));

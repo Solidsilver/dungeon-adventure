@@ -15,13 +15,13 @@ public class PlayerController implements Serializable {
     private Hero initHero() {
         Menu heroSelection = new Menu("Choose a Character:", "Warrior", "Theif", "Sorceress");
         HeroFactory hf = new HeroFactory();
-        int choice = heroSelection.getSelection();
+        int choice = heroSelection.getSelectionDefault();
         return hf.createHero(choice);
     }
 
     public boolean playTurn() {
         Menu mnu = new Menu("~~~Play~~~", "Change Room", "Inventory", "Save Game", "Exit");
-        int choice = mnu.getSelection();
+        int choice = mnu.getSelectionDefault();
 
         switch (choice) {
             case 0:
@@ -48,8 +48,8 @@ public class PlayerController implements Serializable {
 
     private void inventory() {
         Menu mnu = new Menu(this.hero.getName() + "'s Inventory", this.hero.inventoryToString());
-        mnu.addChoice("Back");
-        int choice = mnu.getSelection();
+        mnu.add("Back");
+        int choice = mnu.getSelectionDefault();
         if (!mnu.isLast(choice)) {
             this.hero.useInventoryItem(choice - 1);
         }
