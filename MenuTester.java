@@ -3,9 +3,9 @@ public class MenuTester {
         Menu mnu = new Menu("TestList: ", "jackJack", "billyBob", "hownow", "johndavid", "3.14159", "john ONeal", "Bob Nelson");
         mnu.printDefault();
         pl();
-        mnu.print(10);
+        mnu.print(3);
         pl();
-        mnu.printVert(10);
+        mnu.printVert(3);
     }
 
     private static void pl() {
