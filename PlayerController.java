@@ -19,7 +19,7 @@ public class PlayerController implements Serializable {
         return hf.createHero(choice);
     }
 
-    public boolean playTurn() {
+    public void playTurn() {
         Menu mnu = new Menu("~~~Play~~~", "Change Room", "Inventory", "Save Game", "Exit");
         int choice = mnu.getSelectionDefault();
 
@@ -35,11 +35,9 @@ public class PlayerController implements Serializable {
                 break;
             case 3:
                 this.game.gameOver();
-                return false;
             default:
                 break;
         }
-        return true;
     }
 
     private void changeRoom() {

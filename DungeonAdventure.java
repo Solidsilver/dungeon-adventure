@@ -37,7 +37,6 @@ public class DungeonAdventure {
 	}
 
 	private static Game loadGame() {
-		Scanner kb = new Scanner(System.in);
 		ArrayList<String> saves = getSaveList();
 		Menu mnu = new Menu("Saves", saves);
 		mnu.add("Back");
@@ -90,7 +89,6 @@ public class DungeonAdventure {
 	}
 
 	public static void saveGame(Game game) {
-		Scanner kb = new Scanner(System.in);
 		System.out.print("Save game:\nSave name: ");
 		saveGame(game, kb.nextLine());
 	}

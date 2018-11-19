@@ -23,7 +23,7 @@ public class Game implements Serializable {
         this.isGameOver = false;
     }
 
-    private boolean isGameOver() {
+    /*private boolean isGameOver() {
         if (this.isGameOver) {
             Random rnd = new Random();
             int again = rnd.nextInt(20);
@@ -36,15 +36,15 @@ public class Game implements Serializable {
         }
 
         return this.isGameOver;
-    }
+    }*/
 
     public void gameOver() {
         this.isGameOver = true;
     }
 
     private void playGame() {
-        while (pController.playTurn()) {
-            // pController.playTurn();
+        while (this.isGameOver) {
+            pController.playTurn();
         }
     }
 
