@@ -89,6 +89,7 @@ public class DungeonAdventure {
 	}
 
 	public static void saveGame(Game game) {
+		Scanner kb = new Scanner(System.in);
 		System.out.print("Save game:\nSave name: ");
 		saveGame(game, kb.nextLine());
 	}
