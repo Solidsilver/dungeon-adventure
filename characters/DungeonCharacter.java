@@ -1,5 +1,9 @@
 package characters;
 
+import Attack.AttackFactory;
+import Attack.IAttack;
+import characters.heroes.HeroFactory;
+
 public abstract class DungeonCharacter {
 
 	protected String name;
@@ -8,9 +12,21 @@ public abstract class DungeonCharacter {
 	protected double chanceToHit;
 	protected int damageMin;
 	protected int damageMax;
-	//private CharacterInfo info;
 	
-	public DungeonCharacter(){}
+	protected AttackFactory fact;
+	
+	public DungeonCharacter(String name, int hitPoints, int attackSpeed,
+		     double chanceToHit, int damageMin, int damageMax)
+	{
+		this.name = name;
+		this.hitPoints = hitPoints;
+		this.attackSpeed = attackSpeed;
+		this.chanceToHit = chanceToHit;
+		this.damageMin = damageMin;
+		this.damageMax = damageMax;
+		
+		fact = new AttackFactory();
+	}
 	
 	//-----------------------------------------------------------------
 	public String getName()
@@ -21,6 +37,12 @@ public abstract class DungeonCharacter {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public void setHitPoints(int points)
+	{
+		this.hitPoints += points;
+	}
+	
 	//-----------------------------------------------------------------
 	public int getHitPoints()
 	{
@@ -31,18 +53,22 @@ public abstract class DungeonCharacter {
 	{
 		return attackSpeed;
 	}//end getAttackSpeed
-
-	public void addHitPoints(int hitPoints)
+	
+	public int getDamageMin()
 	{
-		if (hitPoints <=0)
-			System.out.println("Hitpoint amount must be positive.");
-		else
-		{
-			this.hitPoints += hitPoints;
-			//System.out.println("Remaining Hit Points: " + hitPoints);
+		return damageMin;
+	}
+	
+	public int getDamageMax()
+	{
+		return damageMax;
+	}
+	
+	public double getChanceToHit()
+	{
+		return chanceToHit;
+	}
 
-		}
-	}//end addHitPoints method
 	
 	public void subtractHitPoints(int hitPoints)
 	{
@@ -63,38 +89,19 @@ public abstract class DungeonCharacter {
 		if (this.hitPoints == 0)
 			System.out.println(name + " has been killed :-(");
 
-
 	}//end method
+	
+	public void attack(DungeonCharacter opponent)
+	{
+		IAttack tack = fact.getAttack("Attack");
+		tack.action(opponent);
+	}
 	
 	public boolean isAlive()
 	{
 	  return (hitPoints > 0);
 	}//end isAlive method
 	
-	public void attack(DungeonCharacter opponent)
-	{
-		boolean canAttack;
-		int damage;
-
-		canAttack = Math.random() <= chanceToHit;
-
-		if (canAttack)
-		{
-			damage = (int)(Math.random() * (damageMax - damageMin + 1))
-						+ damageMin ;
-			opponent.subtractHitPoints(damage);
-
-
-			System.out.println();
-		}//end if can attack
-		else
-		{
-
-			System.out.println(getName() + "'s attack on " + opponent.getName() +
-								" failed!");
-			System.out.println();
-		}//end else
-
-	}//end attack method
+	
 	
 }

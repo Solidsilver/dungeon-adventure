@@ -1,16 +1,24 @@
 package characters.heroes;
 
+import java.util.ArrayList;
 import characters.DungeonCharacter;
+import pickups.PickupItem;
 
 public abstract class Hero extends DungeonCharacter{
 
 	protected double chanceToBlock;
 	protected int numTurns;
+	ArrayList<PickupItem> inventory;
+	int numPillars = 0, numHealPotions = 0, numVisPotions = 0;
 	
-	public Hero()
+	public Hero(String name, int hitPoints, int attackSpeed,
+		     double chanceToHit, int damageMin, int damageMax,
+			 double chanceToBlock)
 	{
-		 super();
+		super(name, hitPoints, attackSpeed, chanceToHit, damageMin, damageMax);
+		this.chanceToBlock = chanceToBlock;
 	}
+	
 	
 	public boolean defend()
 	{
@@ -18,8 +26,21 @@ public abstract class Hero extends DungeonCharacter{
 
 	}//end defend method
 	
-	abstract public void attack(DungeonCharacter character);
-	abstract public void specialAttack(DungeonCharacter character);
+	public ArrayList<PickupItem> getInventory() {return inventory;}
+	public void addToInventory(ArrayList<PickupItem> items)
+	{
+		for(int i = 0; i < items.size(); i++)
+		{
+			//items[i].toString();
+		}
+	}
 	
+	public void useItem()
+	{
+		
+	}
+	
+	//get inventory method, returns arraylist of strings
+	//use item function
 
 }
