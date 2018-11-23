@@ -19,7 +19,6 @@ public class HeroFactory {
 
     public Hero createHero(int typeID) {
         Hero newHero;
-
         switch (typeID) {
             case 0:
                 newHero = new Warrior();

@@ -13,8 +13,9 @@ public class PlayerController implements Serializable {
     }
 
     private Hero initHero() {
-        Menu heroSelection = new Menu("Choose a Character:", "Warrior", "Theif", "Sorceress");
+        Menu heroSelection ;//= new Menu("Choose a Character:", "Warrior", "Theif", "Sorceress");
         HeroFactory hf = new HeroFactory();
+        heroSelection = new Menu("Choose a Character: ", hf.getOptions());
         int choice = heroSelection.getSelectionDefault();
         return hf.createHero(choice);
     }

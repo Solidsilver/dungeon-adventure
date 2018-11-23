@@ -43,7 +43,7 @@ public class Game implements Serializable {
     }
 
     private void playGame() {
-        while (this.isGameOver) {
+        while (!this.isGameOver) {
             pController.playTurn();
         }
     }
