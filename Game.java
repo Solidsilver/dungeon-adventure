@@ -2,53 +2,72 @@ import java.io.Serializable;
 import java.util.Random;
 
 import dungeon.Dungeon;
+import characters.heroes.*;
 
 public class Game implements Serializable {
     private static final long serialVersionUID = 1L;
+    private Hero hero;
     private Dungeon dungeon;
     private PlayerController pController;
     private boolean isGameOver;
 
     public void start() {
         init();
-        playGame();
-        endGame();
+        int endType = playGame();
+        endGame(endType);
     }
 
     private void init() {
-        if (this.dungeon == null && this.pController == null) {
-            this.dungeon = new Dungeon();
-            this.pController = new PlayerController(this);
+        if (this.dungeon == null && this.pController == null && this.hero == null) {
+            this.hero = PlayerController.initHero();
+            this.dungeon = new Dungeon(hero);
+            this.pController = new PlayerController(this, this.hero);
         }
         this.isGameOver = false;
     }
-
-    /*private boolean isGameOver() {
-        if (this.isGameOver) {
-            Random rnd = new Random();
-            int again = rnd.nextInt(20);
-            switch (again) {
-            case 3:
-                this.isGameOver = true;
-            default:
-                break;
-            }
-        }
-
-        return this.isGameOver;
-    }*/
 
     public void gameOver() {
         this.isGameOver = true;
     }
 
-    private void playGame() {
+    private int playGame() {
+        int ret = 0;
         while (!this.isGameOver) {
-            pController.playTurn();
+            if (this.dungeon.roomHasMonster()) {
+                this.dungeon.beginBattle();
+            }
+            if (!hero.isAlive()) {
+                return 1;
+            }
+            if (this.dungeon.roomHasPit()) {
+                this.dungeon.fallInPit();
+            }
+            if (!hero.isAlive()) {
+                return 1;
+            }
+            this.hero.addToInventory(this.dungeon.getRoomContents());
+            if (this.dungeon.playerWon()) {
+                return 2;
+            }
+            ret = pController.playTurn();
         }
+        return ret;
     }
 
-    private void endGame() {
+    private void endGame(int endType) {
+        switch (endType) {
+            case 0:
+                System.out.println("Come again soon");
+                break;
+            case 1:
+                System.out.println("You died! Try again...");
+                break;
+            case 2:
+                System.out.println("Congratulations! You won.");
+            default:
+                break;
+        }
+
         System.out.println("Game Over");
     }
 

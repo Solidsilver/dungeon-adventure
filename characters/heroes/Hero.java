@@ -35,6 +35,10 @@ public abstract class Hero extends DungeonCharacter {
 		this.inventory.add(p);
 	}
 
+	public void addToInventory(ArrayList<PickupItem> plist) {
+		this.inventory.addAll(plist);
+	}
+
 	public void useInventoryItem(int index) {
 		this.inventory.get(index).use();
 	}

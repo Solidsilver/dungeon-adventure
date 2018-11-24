@@ -2,6 +2,7 @@ package dungeon;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import dungeon.room.*;
 
 public class DungeonMapFactory {
 

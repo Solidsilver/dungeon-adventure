@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+import utils.*;
 
 public class DungeonAdventure {
 	public static void main(String[] args) {

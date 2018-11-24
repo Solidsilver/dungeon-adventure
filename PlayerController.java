@@ -1,18 +1,19 @@
 import characters.heroes.*;
 import java.io.*;
 import java.util.Scanner;
+import utils.*;
 
 public class PlayerController implements Serializable {
     private static final long serialVersionUID = 2L;
     private Hero hero;
     private Game game;
 
-    public PlayerController(Game game) {
-        this.hero = initHero();
+    public PlayerController(Game game, Hero hero) {
+        this.hero = hero;
         this.game = game;
     }
 
-    private Hero initHero() {
+    public static Hero initHero() {
         Menu heroSelection ;//= new Menu("Choose a Character:", "Warrior", "Theif", "Sorceress");
         HeroFactory hf = new HeroFactory();
         heroSelection = new Menu("Choose a Character: ", hf.getOptions());
@@ -20,7 +21,7 @@ public class PlayerController implements Serializable {
         return hf.createHero(choice);
     }
 
-    public void playTurn() {
+    public int playTurn() {
         Menu mnu = new Menu("~~~Play~~~", "Change Room", "Inventory", "Save Game", "Exit");
         int choice = mnu.getSelectionDefault();
 
@@ -36,9 +37,11 @@ public class PlayerController implements Serializable {
                 break;
             case 3:
                 this.game.gameOver();
+                return 0;
             default:
                 break;
         }
+        return -1;
     }
 
     private void changeRoom() {
