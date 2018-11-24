@@ -79,4 +79,12 @@ public class Game implements Serializable {
         DungeonAdventure.saveGame(this);
     }
 
+    public ArrayList<String> getDirections() {
+        return this.dungeon.moveOptions();
+    }
+
+    public void movePlayer(int dir) {
+        this.dungeon.movePlayer(dir);
+    }
+
 }

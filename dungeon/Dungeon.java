@@ -50,5 +50,9 @@ public class Dungeon implements Serializable {
     public boolean playerWon() {
         return false;
     }
+
+    public void movePlayer(int direction) {
+        
+    }
     
 }
