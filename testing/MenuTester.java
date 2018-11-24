@@ -1,3 +1,6 @@
+package testing;
+import utils.Menu;
+
 public class MenuTester {
     public static void main(String[] args) {
         Menu mnu = new Menu("TestList: ", "jackJack", "billyBob", "hownow", "johndavid", "3.14159", "john ONeal", "Bob Nelson");
