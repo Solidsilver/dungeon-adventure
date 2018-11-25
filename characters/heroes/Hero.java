@@ -21,6 +21,7 @@ public abstract class Hero extends DungeonCharacter{
 	{
 		super(name, hitPoints, attackSpeed, chanceToHit, damageMin, damageMax);
 		this.chanceToBlock = chanceToBlock;
+		this.specialAttack = specialAttack;
 	}
 	
 	public void specialAction(DungeonCharacter opponent)
