@@ -1,30 +1,21 @@
 package characters.heroes;
 
+import Attack.IAttack;
+
 public class Thief extends Hero{
 
-	private final String ThiefName = "Thief";
-	private final int ThiefHitPoints = 75;
-	private final int ThiefAttackSpeed = 6;
-	private final double ThiefChanceToHit = 0.8;
-	private final int ThiefDamageMin = 20;
-	private final int ThiefDamageMax = 40;
-	private final double ThiefChanceToBlock = 0.5;
-
-	HeroFactory fact;
-	String specialAttack = "Surprise Attack";
+	private static final String ThiefName = "Thief";
+	private static final int ThiefHitPoints = 75;
+	private static final int ThiefAttackSpeed = 6;
+	private static final double ThiefChanceToHit = 0.8;
+	private static final int ThiefDamageMin = 20;
+	private static final int ThiefDamageMax = 40;
+	private static final double ThiefChanceToBlock = 0.5;
 	
 	public Thief()
 	{
-		super();
-		this.name = ThiefName;
-		this.hitPoints = ThiefHitPoints;
-		this.attackSpeed = ThiefAttackSpeed;
-		this.chanceToHit = ThiefChanceToHit;
-		this.damageMin = ThiefDamageMin;
-		this.damageMax = ThiefDamageMax;
-		this.chanceToBlock = ThiefChanceToBlock;
-
-		fact = new HeroFactory();
+		super(ThiefName, ThiefHitPoints, ThiefAttackSpeed, ThiefChanceToHit, ThiefDamageMin,
+				ThiefDamageMax, ThiefChanceToBlock, "Surprise Attack");
 		
     }//end constructor
 	

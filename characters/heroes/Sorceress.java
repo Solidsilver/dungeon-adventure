@@ -1,7 +1,6 @@
 package characters.heroes;
 
 import Attack.IAttack;
-import characters.DungeonCharacter;
 
 public class Sorceress extends Hero{
 
@@ -15,21 +14,13 @@ public class Sorceress extends Hero{
 	
 	private final int MIN_ADD = 25;
 	private final int MAX_ADD = 50;
-
-	String specialAttack = "Increase Hit Points";
 	
     public Sorceress()
 	{
 		super(SorceressName, SorceressHitPoints, SorceressAttackSpeed, SorceressChanceToHit,
-				SorceressDamageMin, SorceressDamageMax, SorceressChanceToBlock);
-
+				SorceressDamageMin, SorceressDamageMax, SorceressChanceToBlock, 
+				"Increase Hit Points");
     }//end constructor
-    
-    public void specialAttack(DungeonCharacter yourself)
-    {
-    	IAttack tack = fact.getAttack("Increase Hit Points");
-		tack.action(yourself);
-    }
     
     public int getMinAdd()
     {

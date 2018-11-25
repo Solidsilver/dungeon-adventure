@@ -4,7 +4,7 @@ import characters.DungeonCharacter;
 
 public class Attack implements IAttack{
 
-	public void action(DungeonCharacter opponent) 
+	public void action(DungeonCharacter character, DungeonCharacter opponent) 
 	{
 		boolean canAttack;
 		int damage;
@@ -16,12 +16,10 @@ public class Attack implements IAttack{
 			damage = (int)(Math.random() * (opponent.getDamageMax() - opponent.getDamageMin() + 1)) 
 					+ opponent.getDamageMin() ;
 			opponent.subtractHitPoints(damage);
-
 			System.out.println();
 		}//end if can attack
 		else
 		{
-
 			System.out.println(opponent.getName() + "'s attack on " + opponent.getName() + " failed!");
 			System.out.println();
 		}//end else

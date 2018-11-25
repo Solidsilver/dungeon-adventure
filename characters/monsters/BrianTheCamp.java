@@ -2,28 +2,21 @@ package characters.monsters;
 
 public class BrianTheCamp extends Monster{
 
-	private final String GremlinName = "Brian The Camp";
-	private final int GremlinHitPoints = 90;
-	private final int GremlinAttackSpeed = 4;
-	private final double GremlinChanceToHit = 0.9;
-	private final double GremlinChanceToHeal = 0.6;
-	private final int GremlinDamageMin = 50;
-	private final int GremlinDamageMax = 70;
-	private final int GremlinMinHeal = 10;
-	private final int GremlinMaxHeal = 50;
+	private static final String BrianName = "Brian The Camp";
+	private static final int BrianHitPoints = 90;
+	private static final int BrianAttackSpeed = 4;
+	private static final double BrianChanceToHit = 0.9;
+	private static final double BrianChanceToHeal = 0.6;
+	private static final int BrianDamageMin = 50;
+	private static final int BrianDamageMax = 70;
+	private static final int BrianMinHeal = 10;
+	private static final int BrianMaxHeal = 50;
 	
     public BrianTheCamp()
 	{
-		super();
-		this.name = GremlinName;
-		this.hitPoints = GremlinHitPoints;
-		this.attackSpeed = GremlinAttackSpeed;
-		this.chanceToHit = GremlinChanceToHit;
-		this.chanceToHeal = GremlinChanceToHeal;
-		this.damageMin = GremlinDamageMin;
-		this.damageMax = GremlinDamageMax;
-		this.minHeal = GremlinMinHeal;
-		this.maxHeal = GremlinMaxHeal;
+    	super(BrianName, BrianHitPoints, BrianAttackSpeed, BrianChanceToHit,
+    			BrianChanceToHeal, BrianDamageMin, BrianDamageMax, 
+    			BrianMinHeal, BrianMaxHeal);
 	}
 	
 }

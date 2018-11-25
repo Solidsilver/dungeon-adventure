@@ -28,7 +28,6 @@ public abstract class DungeonCharacter {
 		fact = new AttackFactory();
 	}
 	
-	//-----------------------------------------------------------------
 	public String getName()
 	{
 		return name;
@@ -43,12 +42,11 @@ public abstract class DungeonCharacter {
 		this.hitPoints += points;
 	}
 	
-	//-----------------------------------------------------------------
 	public int getHitPoints()
 	{
 		return hitPoints;
 	}//end getHitPoints
-	//-----------------------------------------------------------------
+	
 	public int getAttackSpeed()
 	{
 		return attackSpeed;
@@ -69,7 +67,6 @@ public abstract class DungeonCharacter {
 		return chanceToHit;
 	}
 
-	
 	public void subtractHitPoints(int hitPoints)
 	{
 		if (hitPoints <0)
@@ -94,7 +91,7 @@ public abstract class DungeonCharacter {
 	public void attack(DungeonCharacter opponent)
 	{
 		IAttack tack = fact.getAttack("Attack");
-		tack.action(opponent);
+		tack.action(this, opponent);
 	}
 	
 	public boolean isAlive()

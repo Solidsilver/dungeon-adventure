@@ -2,28 +2,22 @@ package characters.monsters;
 
 public class ChrisThePeters extends Monster{
 
-	private final String GremlinName = "Chris the Peters";
-	private final int GremlinHitPoints = 50;
-	private final int GremlinAttackSpeed = 4;
-	private final double GremlinChanceToHit = 0.3;
-	private final double GremlinChanceToHeal = 0.6;
-	private final int GremlinDamageMin = 20;
-	private final int GremlinDamageMax = 30;
-	private final int GremlinMinHeal = 60;
-	private final int GremlinMaxHeal = 70;
+	private static final String ChrisName = "Chris the Peters";
+	private static final int ChrisHitPoints = 50;
+	private static final int ChrisAttackSpeed = 4;
+	private static final double ChrisChanceToHit = 0.3;
+	private static final double ChrisChanceToHeal = 0.6;
+	private static final int ChrisDamageMin = 20;
+	private static final int ChrisDamageMax = 30;
+	private static final int ChrisMinHeal = 60;
+	private static final int ChrisMaxHeal = 70;
 	
     public ChrisThePeters()
 	{
-		super();
-		this.name = GremlinName;
-		this.hitPoints = GremlinHitPoints;
-		this.attackSpeed = GremlinAttackSpeed;
-		this.chanceToHit = GremlinChanceToHit;
-		this.chanceToHeal = GremlinChanceToHeal;
-		this.damageMin = GremlinDamageMin;
-		this.damageMax = GremlinDamageMax;
-		this.minHeal = GremlinMinHeal;
-		this.maxHeal = GremlinMaxHeal;
+		super(ChrisName, ChrisHitPoints, ChrisAttackSpeed, ChrisChanceToHit, 
+				ChrisChanceToHeal, ChrisDamageMin, ChrisDamageMax, 
+				ChrisMinHeal, ChrisMaxHeal);
+		
 	}
 	
 }

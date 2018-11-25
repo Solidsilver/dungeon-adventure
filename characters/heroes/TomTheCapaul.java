@@ -1,30 +1,21 @@
 package characters.heroes;
 
+import Attack.IAttack;
+
 public class TomTheCapaul extends Hero{
 
-	private final String TomName = "Tom the Capaul";
-	private final int TomHitPoints = 100;
-	private final int TomAttackSpeed = 10;
-	private final double TomChanceToHit = 1;
-	private final int TomDamageMin = 100;
-	private final int TomDamageMax = 100;
-	private final double TomChanceToBlock = 1;
-	
-	HeroFactory fact;
-	String specialAttack = "Crushing Blow";
+	private static final String TomName = "Tom the Capaul";
+	private static final int TomHitPoints = 100;
+	private static final int TomAttackSpeed = 10;
+	private static final double TomChanceToHit = 1;
+	private static final int TomDamageMin = 100;
+	private static final int TomDamageMax = 100;
+	private static final double TomChanceToBlock = 1;
 
 	public TomTheCapaul()
 	{
-		super();
-		this.name = TomName;
-		this.hitPoints = TomHitPoints;
-		this.attackSpeed = TomAttackSpeed;
-		this.chanceToHit = TomChanceToHit;
-		this.damageMin = TomDamageMin;
-		this.damageMax = TomDamageMax;
-		this.chanceToBlock = TomChanceToBlock;
-
-		fact = new HeroFactory();
+		super(TomName, TomHitPoints, TomAttackSpeed, TomChanceToHit, TomDamageMin,
+				TomDamageMax, TomChanceToBlock, "Crushing Blow");
 		
     }//end constructor
 	

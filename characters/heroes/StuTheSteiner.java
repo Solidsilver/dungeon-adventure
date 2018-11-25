@@ -1,31 +1,35 @@
 package characters.heroes;
 
+import Attack.IAttack;
+
 public class StuTheSteiner extends Hero{
 
-	private final String StuName = "Stu the Steiner";
-	private final int StuHitPoints = 10;
-	private final int StuAttackSpeed = 2;
-	private final double StuChanceToHit = 0.1;
-	private final int StuDamageMin = 10;
-	private final int StuDamageMax = 20;
-	private final double StuChanceToBlock = 0.1;
-
-	HeroFactory fact;
+	private static final String StuName = "Stu the Steiner";
+	private static final int StuHitPoints = 10;
+	private static final int StuAttackSpeed = 2;
+	private static final double StuChanceToHit = 0.1;
+	private static final int StuDamageMin = 10;
+	private static final int StuDamageMax = 20;
+	private static final double StuChanceToBlock = 0.1;
+	
 	String specialAttack = "Increase Hit Points";
+	
+	private final int MIN_ADD = 40;
+	private final int MAX_ADD = 70;
 	
 	public StuTheSteiner()
 	{
-		super();
-		this.name = StuName;
-		this.hitPoints = StuHitPoints;
-		this.attackSpeed = StuAttackSpeed;
-		this.chanceToHit = StuChanceToHit;
-		this.damageMin = StuDamageMin;
-		this.damageMax = StuDamageMax;
-		this.chanceToBlock = StuChanceToBlock;
-
-		fact = new HeroFactory();
-		
+		super(StuName, StuHitPoints, StuAttackSpeed, StuChanceToHit, StuDamageMin,
+				StuDamageMax, StuChanceToBlock, "Increase Hit Points");
     }//end constructor
 	
+	public int getMinAdd()
+    {
+    	return MIN_ADD;
+    }
+    
+    public int getMaxAdd()
+    {
+    	return MAX_ADD;
+    }
 }

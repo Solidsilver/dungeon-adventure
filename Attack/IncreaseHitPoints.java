@@ -5,7 +5,7 @@ import characters.heroes.Sorceress;
 
 public class IncreaseHitPoints implements IAttack{
 
-	public void action(DungeonCharacter character) 
+	public void action(DungeonCharacter character, DungeonCharacter opponent) 
 	{	
 		int hPoints;
 		Sorceress yourself = (Sorceress)character;

@@ -1,32 +1,22 @@
 package characters.heroes;
 
+import Attack.IAttack;
+
 public class Warrior extends Hero{
 
-	private final String WarriorName = "Warrior";
-	private final int WarriorHitPoints = 125;
-	private final int WarriorAttackSpeed = 4;
-	private final double WarriorChanceToHit = 0.8;
-	private final int WarriorDamageMin = 35;
-	private final int WarriorDamageMax = 60;
-	private final double WarriorChanceToBlock = 0.2;
-	
-	HeroFactory fact;
-	String specialAttack = "Crushing Blow";
+	private static final String WarriorName = "Warrior";
+	private static final int WarriorHitPoints = 125;
+	private static final int WarriorAttackSpeed = 4;
+	private static final double WarriorChanceToHit = 0.8;
+	private static final int WarriorDamageMin = 35;
+	private static final int WarriorDamageMax = 60;
+	private static final double WarriorChanceToBlock = 0.2;
 	
 	public Warrior()
 	{
-
-		super(/*"Warrior", 125, 4, .8, 35, 60, .2*/);
-		this.name = WarriorName;
-		this.hitPoints = WarriorHitPoints;
-		this.attackSpeed = WarriorAttackSpeed;
-		this.chanceToHit = WarriorChanceToHit;
-		this.damageMin = WarriorDamageMin;
-		this.damageMax = WarriorDamageMax;
-		this.chanceToBlock = WarriorChanceToBlock;
-		
-		fact = new HeroFactory();
-
+		super(WarriorName, WarriorHitPoints, WarriorAttackSpeed, WarriorChanceToHit,
+				WarriorDamageMin, WarriorDamageMax, WarriorChanceToBlock, "Crushing Blow");
+	
     }//end constructor
 	
 }
