@@ -14,12 +14,16 @@ public class AttackFactory {
 			{
 			case "Attack":
 				attack = new Attack();
+				break;
 			case "Crushing Blow": 
 				attack = new CrushingBlow();
+				break;
 			case "Increase Hit Points":
 				attack = new IncreaseHitPoints();
+				break;
 			case "Surprise Attack":
 				attack = new SurpriseAttack();
+				break;
 			}
 			
 			attackMap.put(attackName, attack);
