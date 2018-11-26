@@ -1,7 +1,5 @@
 package characters.heroes;
 
-import Attack.IAttack;
-
 public class Sorceress extends Hero{
 
 	private static final String SorceressName = "Sorceress";

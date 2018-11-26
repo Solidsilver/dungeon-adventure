@@ -14,7 +14,6 @@ public class TomTheCapaul extends Hero{
 	{
 		super(TomName, TomHitPoints, TomAttackSpeed, TomChanceToHit, TomDamageMin,
 				TomDamageMax, TomChanceToBlock, "Crushing Blow");
-		
     }//end constructor
 	
 }

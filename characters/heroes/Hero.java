@@ -12,7 +12,7 @@ public abstract class Hero extends DungeonCharacter{
 	protected int numTurns;
 	
 	ArrayList<PickupItem> inventory;
-	//int numPillars = 0, numHealPotions = 0, numVisPotions = 0;
+	int numPillars;
 	protected String specialAttack;
 	
 	public Hero(String name, int hitPoints, int attackSpeed,
@@ -22,6 +22,7 @@ public abstract class Hero extends DungeonCharacter{
 		super(name, hitPoints, attackSpeed, chanceToHit, damageMin, damageMax);
 		this.chanceToBlock = chanceToBlock;
 		this.specialAttack = specialAttack;
+		numPillars = 0 ;
 	}
 	
 	public void specialAction(DungeonCharacter opponent)
@@ -30,6 +31,11 @@ public abstract class Hero extends DungeonCharacter{
 		tack.action(this, opponent);
     }
 	
+	public boolean hasAllPillars()
+	{
+		return numPillars == 4;
+	}
+	
 	public boolean defend()
 	{
 		return Math.random() <= chanceToBlock;
@@ -37,11 +43,26 @@ public abstract class Hero extends DungeonCharacter{
 	}//end defend method
 	
 	public ArrayList<PickupItem> getInventory() {return inventory;}
-	public void addToInventory(ArrayList<PickupItem> items)
+	
+	public String printInventory()
 	{
+		String myInventory = "Player inventory:\n";
+		
+		for(int i = 0; i < inventory.size(); i++)
+		{
+			myInventory += inventory.get(i).toString() + "\n";
+		}
+		
+		return myInventory;
+	}
+	
+	public void addToInventory(ArrayList<PickupItem> items)
+	{		
+		if(items.get(0).getName() == "Pillar")
+			numPillars++;
 		for(int i = 0; i < items.size(); i++)
 		{
-			//items[i].toString();
+			inventory.add(items.get(i));
 		}
 	}
 	
