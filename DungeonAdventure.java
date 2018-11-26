@@ -115,8 +115,4 @@ public class DungeonAdventure {
 		saveGame(game, "last_saved");
 	}
 
-	private static void startGame(Game gme) {
-
-	}
-
 }
