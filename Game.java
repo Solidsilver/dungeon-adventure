@@ -31,7 +31,7 @@ public class Game implements Serializable {
     }
 
     private int playGame() {
-        int ret = 0;
+        int returnFlag = 0;
         while (!this.isGameOver) {
             if (this.dungeon.roomHasMonster()) {
                 this.dungeon.beginBattle();
@@ -49,9 +49,9 @@ public class Game implements Serializable {
             if (this.dungeon.playerWon()) {
                 return 2;
             }
-            ret = pController.playTurn();
+            returnFlag = pController.playTurn();
         }
-        return ret;
+        return returnFlag;
     }
 
     private void endGame(int endType) {
