@@ -3,6 +3,7 @@ import java.util.Random;
 
 import dungeon.Dungeon;
 import characters.heroes.*;
+import java.util.ArrayList;
 
 public class Game implements Serializable {
     private static final long serialVersionUID = 1L;

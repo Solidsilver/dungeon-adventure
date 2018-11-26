@@ -45,7 +45,7 @@ public class PlayerController implements Serializable {
     }
 
     private void changeRoom() {
-        Menu rooms = new Menu(this.game.getDirections());
+        Menu rooms = new Menu("Rooms", this.game.getDirections());
         int choice = rooms.getSelectionDefault();
         rooms.add("Back");
         if (!rooms.isLast(choice)) {

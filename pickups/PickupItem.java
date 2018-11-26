@@ -1,4 +1,5 @@
 package pickups;
+import dungeon.Dungeon;
 
 public abstract class PickupItem {
     private String name;
