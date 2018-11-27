@@ -1,4 +1,4 @@
-package tempPackage;
+package dungeon.room;
 import pickups.*;
 
 import java.util.ArrayList;

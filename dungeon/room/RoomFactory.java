@@ -1,4 +1,4 @@
-package tempPackage;
+package dungeon.room;
 
 public  class RoomFactory {
 
