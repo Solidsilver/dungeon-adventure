@@ -13,6 +13,8 @@ public abstract class Hero extends DungeonCharacter{
 	
 	ArrayList<PickupItem> inventory;
 	int numPillars;
+	int numHealingPotions;
+	int numVisionPotions;
 	protected String specialAttack;
 	
 	public Hero(String name, int hitPoints, int attackSpeed,
@@ -22,7 +24,9 @@ public abstract class Hero extends DungeonCharacter{
 		super(name, hitPoints, attackSpeed, chanceToHit, damageMin, damageMax);
 		this.chanceToBlock = chanceToBlock;
 		this.specialAttack = specialAttack;
-		numPillars = 0 ;
+		numPillars = 0;
+		numHealingPotions = 0;
+		numVisionPotions = 0;
 	}
 	
 	public void specialAction(DungeonCharacter opponent)
