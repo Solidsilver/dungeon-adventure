@@ -1,4 +1,5 @@
-package dungeon.room;
+package tempPackage;
+import pickups.*;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,25 +13,24 @@ import java.util.Random;
  */
 public class Room {
 
-	public ArrayList<String> roomsContents = new ArrayList<String>();  //HealingPostion, VisionPostion, OOPillarPiece
+	public ArrayList<PickupItems> roomsContents = new ArrayList<PickupItems>();  //HealingPostion, VisionPostion, OOPillarPiece
 	
-	//private boolean containsHealingPotion = false;
-	//private boolean containsVisonPotion = false;	
-	//private boolean containsCrownPiece1 = false;
-	//private boolean containsCrownPiece2 = false;
-	
+	private Dungeon dungeon;
 	private boolean containsEnterence = false;
 	private boolean containsExit = false;
 	private boolean emptyRoom = false;
 	private char roomsContentsLetter = 'E';
 	
 	private boolean containsPit = false;
+	private int pitsHitPointDamage = 0;
 	private boolean containsMonster = false;	
 
-	public final int SPAWN_CHANCE_PERCENTAGE = 30; // 10%
+	public final int SPAWN_CHANCE_PERCENTAGE = 10; // 10%
 
-	public Room(String roomType) 
+	public Room(String roomType, Dugneon dungeon) 
 		{
+			this.dungeon = dungeon;
+			
 			if(roomType == "Entrance")
 			{
 				this.containsEnterence = true;
@@ -51,17 +51,24 @@ public class Room {
 				setHasVisionPotion(willItemSpawn(SPAWN_CHANCE_PERCENTAGE)); 	//using the spawn % to determine if the a vision potion will spawn in the room.
 				setHasPit(willItemSpawn(SPAWN_CHANCE_PERCENTAGE));				//using the spawn % to determine if the a pit will spawn in the room.
 				setHasMonster(willItemSpawn(SPAWN_CHANCE_PERCENTAGE));			//using the spawn % to determine if the a Monster will spawn in the room.
-				roomsContentsLetter = getRoomsContents();
+				roomsContentsLetter = getRoomsContentsLetter();
 				if(roomsContentsLetter == 'E')
 					this.setIsEmptyRoom(true);
 			}	
 	}// end default constr
 	
-	
-	public ArrayList<String> getRmsContents(){
-		return this.roomsContents;
-		
+	//create a temp copy of the Rooms contents, clear the rooms list, update Rooms contents Letter, return temp copy. 
+	public ArrayList<PickupItems> getRoomsContents(){			
+		ArrayList<PickupItems> tempContests = new ArrayList<PickupItems>();
+		for (PickupItems item : roomsContents) {
+			tempContests.add(item);
+		}
+		roomsContents.clear();
+		roomsContentsLetter = getRoomsContentsLetter();
+		return tempContests;		
 	}
+	
+	
 	public boolean hasPit() {
 		return containsPit;
 	}
@@ -72,47 +79,46 @@ public class Room {
 
 	public void setHasPit(boolean containsPit) {
 		this.containsPit = containsPit;
+		setPitsRandomHitPointDamage();
 	}
 	
+	public void setPitsRandomHitPointDamage() {
+		Random random = new Random();		
+		this.pitsHitPointDamage = (random.nextInt(20) + 1);		
+	}
+	
+	public int getPitsRandomHitPointDamage() {
+		return this.pitsHitPointDamage;
+	}
 	public void setHasMonster(boolean containsMonster) {
 		this.containsMonster = containsMonster;
 	}
 
 	public void setHasHealingPotion(boolean containsHealingPotion) {
 		if(containsHealingPotion)
-			roomsContents.add("HealingPotion");
+			roomsContents.add(new HealingPotion(Dugneon dungeon));
 	}
 	
 	public void setHasVisionPotion(boolean containsVisionPotion) {
 		if(containsVisionPotion)
-			roomsContents.add("VisionPotion");
+			roomsContents.add(new VisionPotion(Dugneon dungeon));
 	}	
 
 	public void setHasOOPilarPiece() {		
-		roomsContents.add("OOPillarPiece");
+		roomsContents.add(new Pillar(Dugneon dungeon));		
 	}	
 
 	public boolean hasEnterence() {
 		return containsEnterence;
 	}
-
-	public void setHasEnterence() {
-		this.containsEnterence = true;
-		this.roomsContentsLetter = 'I';
-	}
-
+	
 	public boolean isExit() {
 		return containsExit;
-	}
+	}	
 
-	public void setIsExit() {
-		this.containsExit = true;
-		this.roomsContentsLetter = 'O';
+	public boolean isEmptyRoom() {
+		return emptyRoom;
 	}
-
-	//public boolean isEmptyRoom() {
-	//	return emptyRoom;
-	//}
 
 	public void setIsEmptyRoom(boolean emptyRoom) {
 		this.emptyRoom = emptyRoom;
@@ -129,7 +135,7 @@ public class Room {
 	}// end method willItemSpawn
 	
 	
-	public char getRoomsContents() {
+	public char getRoomsContentsLetter() {
 				
 		if(containsEnterence)
 			return 'I';
@@ -141,7 +147,7 @@ public class Room {
 		if(containsPit && !containsMonster && roomsContents.size() == 0) //contains only a pit
 			return 'P';
 		if(containsMonster && !containsPit && roomsContents.size() == 0)
-			return 'R'; //R is for Monster, since M was already taken
+			return 'X'; //X is for Monster, since M was already taken
 		if(RoomHasContentsOf("HealingPostion") && !RoomHasContentsOf("VisionPostion") && !RoomHasContentsOf("OOPillarPiece") && !containsPit && !containsMonster) //contains only a healing potion
 			return 'H'; 
 		if(RoomHasContentsOf("VisionPostion") && !RoomHasContentsOf("HealingPostion") && !RoomHasContentsOf("OOPillarPiece") && !containsPit && !containsMonster) //contains only a  vision potion
@@ -156,10 +162,10 @@ public class Room {
 	//Check to see if the room contents contains "VisionPostion", "HealingPostion", or a "OOPillarPiece". 
 	public boolean RoomHasContentsOf(String typeOfContent) {		
 		if(roomsContents.contains(typeOfContent) )
-			return true;			
-		
+			return true;
 		return false;
 	}
+	
 	public void clearRoomsContents() {	
 		roomsContents.clear();
 		containsMonster = false;
@@ -173,8 +179,8 @@ public class Room {
 		}	
 	}
 	
-	public void printRoom () {  //change the XCoord and Y Coord
-		String result;
+	public String toString() {  //change the XCoord and Y Coord
+		String result = null;
 		//char RmsItem = 'M';
 		// * * *    <- Top line 
 		// * M |    <- Middle line
@@ -182,14 +188,13 @@ public class Room {
 		
 		// Top line: 	will always start & end with a "*" but the middle symbol be a "*" when room is on the top row (Y = 0) then there is not door and "*" is printed 
 		// Middle line:	first symbol will be * when room is on the left border (x = 0).  The center symbol will always display a char with represents the rooms contents.  The last symbol will by * when the room on the right side board (X = 4)  
-		// Bottom line: 
+		// Bottom line: 		
 		
+		result +=  ("* * *\n"); 							//Top line		 	
+		result += ("* "  + roomsContentsLetter +  " *\n");  // Middle line
+		result += ("* * *\n"); 							// Bottom line
 		
-		System.out.println  ("* * *"); 							//Top line		 	
-		System.out.println("* "  + roomsContentsLetter +  " *");  // Middle line
-		System.out.println("* * * "); 							// Bottom line
-		
-		
+		return result;
 		}
 	
 }// end room class
@@ -200,6 +205,11 @@ public class Room {
 
 ///////Removed to support the Room's Contents ArrayList
 /*
+    //private boolean containsHealingPotion = false;
+	//private boolean containsVisonPotion = false;	
+	//private boolean containsCrownPiece1 = false;
+	//private boolean containsCrownPiece2 = false;
+	 
 public boolean hasHealingPotion() {
 	return containsHealingPotion;
 }
@@ -216,6 +226,20 @@ public void setHasVisonPotion(boolean containsVisonPotion) {
 	this.containsVisonPotion = containsVisonPotion;
 }
 */
+
+//removed as the room factory will handle setting up the room. 
+/*
+ * public void setHasEnterence() {
+		this.containsEnterence = true;
+		this.roomsContentsLetter = 'I';
+	}
+
+		public void setIsExit() {
+		this.containsExit = true;
+		this.roomsContentsLetter = 'O';
+	}
+ */
+
 
 /*  //Should be moved to a map printing class, so the room does not need to know it location.  
  * public String toString () {  //change the XCoord and Y Coord
