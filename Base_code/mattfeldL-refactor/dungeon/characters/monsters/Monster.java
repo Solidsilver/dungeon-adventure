@@ -1,6 +1,6 @@
-package dungeon.characters.monsters;
+package base_code.mattfeldL-refactor.dungeon.characters.monsters;
 
-import dungeon.characters.DungeonCharacter;
+import base_code.mattfeldL-refactor.dungeon.characters.DungeonCharacter;
 
 public abstract class Monster extends DungeonCharacter {
 	protected double chanceToHeal;

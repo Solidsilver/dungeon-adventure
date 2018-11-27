@@ -1,6 +1,5 @@
-package base_code.mattfeldL-refactor.dungeon.characters.heroes;
-import base_code.mattfeldL-refactor.dungeon.characters.DungeonCharacter;
-
+package characters.heroes;
+import characters.DungeonCharacter;
 import java.util.Scanner;
 
 public class Warrior extends Hero

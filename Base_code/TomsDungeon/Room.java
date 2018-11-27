@@ -1,3 +1,4 @@
+package base_code.TomsDungeon;
 import java.util.Random;
 
 public class Room

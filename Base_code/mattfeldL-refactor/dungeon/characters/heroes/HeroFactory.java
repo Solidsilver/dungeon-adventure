@@ -1,4 +1,4 @@
-package dungeon.characters.heroes;
+package base_code.mattfeldL-refactor.dungeon.characters.heroes;
 
 public class HeroFactory {
     public Hero createHero(String type) {
