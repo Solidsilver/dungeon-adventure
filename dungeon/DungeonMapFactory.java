@@ -2,10 +2,12 @@ package dungeon;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import dungeon.room.Room;
+import dungeon.room.*;
 
 public class DungeonMapFactory {
 
-	public static Room[][] createDungeonMap( int MAPSMAX_Y, int MAPSMAX_X, Dugneon dungeon){
+	public static Room[][] createDungeonMap( int MAPSMAX_Y, int MAPSMAX_X, Dungeon dungeon){
 		
 		Room[][] roomsArray = new Room[MAPSMAX_Y][MAPSMAX_X];
 				

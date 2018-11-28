@@ -1,6 +1,6 @@
 package pickups;
-import base_code.JHowes.DungeonCharacter;
 import dungeon.Dungeon;
+import characters.DungeonCharacter;
 
 public abstract class PickupItem {
     private String name;

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+import pickups.PickupItem;
+import dungeon.Dungeon;
 
 /**
  * 
@@ -13,7 +15,7 @@ import java.util.Random;
  */
 public class Room {
 
-	public ArrayList<PickupItems> roomsContents = new ArrayList<PickupItems>();  //HealingPostion, VisionPostion, OOPillarPiece
+	public ArrayList<PickupItem> roomsContents = new ArrayList<PickupItem>();  //HealingPostion, VisionPostion, OOPillarPiece
 	
 	private Dungeon dungeon;
 	private boolean containsEnterence = false;
@@ -27,7 +29,7 @@ public class Room {
 
 	public final int SPAWN_CHANCE_PERCENTAGE = 10; // 10%
 
-	public Room(String roomType, Dugneon dungeon) 
+	public Room(String roomType, Dungeon dungeon) 
 		{
 			this.dungeon = dungeon;
 			
@@ -58,9 +60,9 @@ public class Room {
 	}// end default constr
 	
 	//create a temp copy of the Rooms contents, clear the rooms list, update Rooms contents Letter, return temp copy. 
-	public ArrayList<PickupItems> getRoomsContents(){			
-		ArrayList<PickupItems> tempContests = new ArrayList<PickupItems>();
-		for (PickupItems item : roomsContents) {
+	public ArrayList<PickupItem> getRoomsContents(){			
+		ArrayList<PickupItem> tempContests = new ArrayList<PickupItem>();
+		for (PickupItem item : roomsContents) {
 			tempContests.add(item);
 		}
 		roomsContents.clear();
@@ -96,16 +98,16 @@ public class Room {
 
 	public void setHasHealingPotion(boolean containsHealingPotion) {
 		if(containsHealingPotion)
-			roomsContents.add(new HealingPotion(Dugneon dungeon));
+			roomsContents.add(new HealingPotion(dungeon));
 	}
 	
 	public void setHasVisionPotion(boolean containsVisionPotion) {
 		if(containsVisionPotion)
-			roomsContents.add(new VisionPotion(Dugneon dungeon));
+			roomsContents.add(new VisionPotion(dungeon));
 	}	
 
 	public void setHasOOPilarPiece() {		
-		roomsContents.add(new Pillar(Dugneon dungeon));		
+		roomsContents.add(new Pillar(dungeon));		
 	}	
 
 	public boolean hasEnterence() {

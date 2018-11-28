@@ -1,5 +1,6 @@
 package characters;
 import java.io.Serializable;
+import dungeon.Dungeon;
 /**
  * Description: Abstract Base class for inheritance hierarchy for characters
 */

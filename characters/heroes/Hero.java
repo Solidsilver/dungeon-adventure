@@ -47,6 +47,14 @@ public abstract class Hero extends DungeonCharacter {
 	}//end defend method
 	
 	public ArrayList<PickupItem> getInventory() {return inventory;}
+
+	public ArrayList<String> inventoryToString() {
+		ArrayList<String> ret = new ArrayList<>();
+		for (PickupItem itm: this.inventory) {
+			ret.add(itm.getName());
+		}
+		return ret;
+	}
 	
 	public String printInventory()
 	{

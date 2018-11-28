@@ -1,9 +1,11 @@
 package pickups;
 
 import pickups.PickupItem;
+import characters.DungeonCharacter;
+import dungeon.Dungeon;
 
 public class Pillar extends PickupItem {
-    public Pillar(Dugneon dungeon) {
+    public Pillar(Dungeon dungeon) {
         super("Pillar", dungeon);
     }
 

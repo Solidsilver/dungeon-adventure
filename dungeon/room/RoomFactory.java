@@ -1,8 +1,9 @@
 package dungeon.room;
+import dungeon.Dungeon;
 
 public  class RoomFactory {
 
-	public static Room createRoom(String roomType, Dugneon dungeon)  {  //Room types are Entrance, Exit, OOPillarPieceRoom, NormalRoom 
+	public static Room createRoom(String roomType, Dungeon dungeon)  {  //Room types are Entrance, Exit, OOPillarPieceRoom, NormalRoom 
 		
 		if(roomType == "Entrance") {
 			Room room = new Room("Entrance", dungeon);	

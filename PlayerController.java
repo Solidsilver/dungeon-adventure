@@ -18,7 +18,7 @@ public class PlayerController implements Serializable {
         HeroFactory hf = new HeroFactory();
         heroSelection = new Menu("Choose a Character: ", hf.getOptions());
         int choice = heroSelection.getSelectionDefault();
-        return hf.createHero(choice);
+        return hf.makeHero(choice);
     }
 
     public int playTurn() {
@@ -58,7 +58,7 @@ public class PlayerController implements Serializable {
         mnu.add("Back");
         int choice = mnu.getSelectionDefault();
         if (!mnu.isLast(choice)) {
-            this.hero.useInventoryItem(choice - 1);
+            this.hero.useItem(choice - 1);
         }
     }
 

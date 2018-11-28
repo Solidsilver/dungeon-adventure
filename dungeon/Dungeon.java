@@ -16,7 +16,7 @@ public class Dungeon implements Serializable {
         this.hero = hero;
         Random rnd = new Random();
         seed = rnd.nextInt(10000000);
-        this.map = DungeonMapFactory.createDungeonMap(10, 10);
+        this.map = DungeonMapFactory.createDungeonMap(10, 10, this);
     }
 
     public String toString() {
@@ -52,6 +52,10 @@ public class Dungeon implements Serializable {
     }
 
     public void movePlayer(int direction) {
+        
+    }
+
+    public void printPlayerLocation() {
         
     }
     
