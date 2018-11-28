@@ -9,7 +9,7 @@ import Attack.AttackFactory;
 import Attack.IAttack;
 import characters.heroes.HeroFactory;
 
-public abstract class DungeonCharacter {
+public abstract class DungeonCharacter implements Serializable {
 
 	protected String name;
 	protected int hitPoints;

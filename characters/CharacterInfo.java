@@ -1,6 +1,8 @@
 package characters;
 
-public class CharacterInfo {
+import java.io.Serializable;
+
+public class CharacterInfo implements Serializable {
 
 	private static CharacterInfo instance = null;
 	

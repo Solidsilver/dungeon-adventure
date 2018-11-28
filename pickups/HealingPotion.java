@@ -1,5 +1,6 @@
 package pickups;
 
+import java.io.Serializable;
 import java.util.Random;
 
 import characters.DungeonCharacter;

@@ -1,7 +1,9 @@
 package characters.monsters;
+import java.io.Serializable;
+
 import characters.DungeonCharacter;
 
-public abstract class Monster extends DungeonCharacter{
+public abstract class Monster extends DungeonCharacter implements Serializable {
 
 	protected double chanceToHeal;
 	protected int minHeal, maxHeal;

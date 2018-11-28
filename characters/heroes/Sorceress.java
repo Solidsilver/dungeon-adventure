@@ -1,6 +1,6 @@
 package characters.heroes;
 
-public class Sorceress extends Hero{
+public class Sorceress extends Hero {
 
 	private static final String SorceressName = "Sorceress";
 	private static final int SorceressHitPoints = 75;

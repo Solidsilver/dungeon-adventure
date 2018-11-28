@@ -1,11 +1,12 @@
 package dungeon;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import dungeon.room.Room;
 import dungeon.room.*;
 
-public class DungeonMapFactory {
+public class DungeonMapFactory implements Serializable {
 
 	public static Room[][] createDungeonMap( int MAPSMAX_Y, int MAPSMAX_X, Dungeon dungeon){
 		

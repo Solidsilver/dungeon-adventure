@@ -1,6 +1,7 @@
 package dungeon.room;
 import pickups.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -13,7 +14,7 @@ import dungeon.Dungeon;
  * @author Jeff_PC
  *
  */
-public class Room {
+public class Room implements Serializable {
 
 	public ArrayList<PickupItem> roomsContents = new ArrayList<PickupItem>();  //HealingPostion, VisionPostion, OOPillarPiece
 	

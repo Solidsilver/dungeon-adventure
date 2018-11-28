@@ -1,8 +1,11 @@
 package pickups;
 import dungeon.Dungeon;
+
+import java.io.Serializable;
+
 import characters.DungeonCharacter;
 
-public abstract class PickupItem {
+public abstract class PickupItem implements Serializable {
     private String name;
     protected Dungeon inDungeon;
 

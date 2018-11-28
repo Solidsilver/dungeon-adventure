@@ -1,12 +1,13 @@
 package characters.heroes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import Attack.IAttack;
 import characters.DungeonCharacter;
 import pickups.PickupItem;
 
-public abstract class Hero extends DungeonCharacter {
+public abstract class Hero extends DungeonCharacter implements Serializable {
 
 	protected double chanceToBlock;
 	protected int numTurns;
