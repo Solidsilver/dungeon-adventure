@@ -1,8 +1,10 @@
 package Attack;
 
+import java.io.Serializable;
+
 import characters.DungeonCharacter;
 
-public class Attack implements IAttack{
+public class Attack implements IAttack, Serializable{
 
 	public void action(DungeonCharacter character, DungeonCharacter opponent) 
 	{

@@ -1,7 +1,8 @@
 package Attack;
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class AttackFactory {
+public class AttackFactory implements Serializable {
 
 	private HashMap<String, IAttack> attackMap = new HashMap<String, IAttack>();
 	

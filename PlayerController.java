@@ -33,7 +33,7 @@ public class PlayerController implements Serializable {
                 inventory();
                 break;
             case 2:
-                DungeonAdventure.saveGame(this.game);
+                DungeonAdventure.saveGameDefault(this.game);
                 break;
             case 3:
                 this.game.gameOver();

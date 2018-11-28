@@ -1,9 +1,11 @@
 package Attack;
 
+import java.io.Serializable;
+
 import characters.DungeonCharacter;
 import characters.heroes.Sorceress;
 
-public class IncreaseHitPoints implements IAttack{
+public class IncreaseHitPoints implements IAttack, Serializable{
 
 	public void action(DungeonCharacter character, DungeonCharacter opponent) 
 	{	
