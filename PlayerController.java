@@ -14,7 +14,7 @@ public class PlayerController implements Serializable {
     }
 
     public static Hero initHero() {
-        Menu heroSelection ;//= new Menu("Choose a Character:", "Warrior", "Theif", "Sorceress");
+        Menu heroSelection;// = new Menu("Choose a Character:", "Warrior", "Theif", "Sorceress");
         HeroFactory hf = new HeroFactory();
         heroSelection = new Menu("Choose a Character: ", hf.getOptions());
         int choice = heroSelection.getSelectionDefault();
@@ -26,29 +26,32 @@ public class PlayerController implements Serializable {
         int choice = mnu.getSelectionDefault();
 
         switch (choice) {
-            case 0:
-                changeRoom();
-                break;
-            case 1:
-                inventory();
-                break;
-            case 2:
-                DungeonAdventure.saveGameDefault(this.game);
-                break;
-            case 3:
-                this.game.gameOver();
-                return 0;
-            default:
-                break;
+        case 0:
+            changeRoom();
+            break;
+        case 1:
+            inventory();
+            break;
+        case 2:
+            DungeonAdventure.saveGameDefault(this.game);
+            break;
+        case 3:
+            this.game.gameOver();
+            return 0;
+        default:
+            break;
         }
         return -1;
     }
 
     private void changeRoom() {
-        Menu rooms = new Menu("Rooms", this.game.getDirections());
-        int choice = rooms.getSelectionDefault();
-        rooms.add("Back");
-        if (!rooms.isLast(choice)) {
+        Menu moveOptions = new Menu("Rooms", "North", "South", "East", "West");
+        moveOptions.add("Back");
+        int choice;
+        do {
+            choice = moveOptions.getSelectionDefault();
+        } while (this.game.isMoveValid(choice) || moveOptions.isLast(choice));
+        if (!moveOptions.isLast(choice)) {
             this.game.movePlayer(choice);
         }
     }

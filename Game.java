@@ -34,6 +34,9 @@ public class Game implements Serializable {
     private int playGame() {
         int returnFlag = 0;
         while (!this.isGameOver) {
+            if (this.dungeon.playerAtEnd() && this.hero.hasAllPillars()) {
+                return 2;
+            }
             if (this.dungeon.roomHasMonster()) {
                 this.dungeon.beginBattle();
             }
@@ -47,9 +50,7 @@ public class Game implements Serializable {
                 return 1;
             }
             this.hero.addToInventory(this.dungeon.getRoomContents());
-            if (this.dungeon.playerWon()) {
-                return 2;
-            }
+            
             returnFlag = pController.playTurn();
         }
         return returnFlag;
@@ -86,6 +87,10 @@ public class Game implements Serializable {
 
     public void movePlayer(int dir) {
         this.dungeon.movePlayer(dir);
+    }
+
+    public boolean isMoveValid(int dir) {
+        return this.dungeon.isMoveValid(dir);
     }
 
 }
