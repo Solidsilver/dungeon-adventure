@@ -66,7 +66,7 @@ public abstract class Hero extends DungeonCharacter implements Serializable {
 	}
 
 	public void addToInventory(ArrayList<PickupItem> items) {
-		if (items != null) {
+		if (items != null && items.size() > 0) {
 			if (items.get(0).getName() == "Pillar")
 				numPillars++;
 			this.inventory.addAll(items);
@@ -94,7 +94,7 @@ public abstract class Hero extends DungeonCharacter implements Serializable {
 
 		System.out.println("Number of turns this round is: " + numTurns);
 
-	}// end battleChoices
+	}// end battleChoicesx
 
 	public void subtractHitPoints(int hitPoints) {
 		if (defend()) {

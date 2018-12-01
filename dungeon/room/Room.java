@@ -111,7 +111,7 @@ public class Room implements Serializable {
 		roomsContents.add(new Pillar(dungeon));		
 	}	
 
-	public boolean hasEnterence() {
+	public boolean hasEntrance() {
 		return containsEnterence;
 	}
 	

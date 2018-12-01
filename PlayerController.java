@@ -48,9 +48,14 @@ public class PlayerController implements Serializable {
         Menu moveOptions = new Menu("Rooms", "North", "South", "East", "West");
         moveOptions.add("Back");
         int choice;
+        boolean lastMoveValid = true;
         do {
+            if (!lastMoveValid) {
+                System.out.println("Invalid Move");
+            }
             choice = moveOptions.getSelectionDefault();
-        } while (this.game.isMoveValid(choice) || moveOptions.isLast(choice));
+            lastMoveValid = this.game.isMoveValid(choice);
+        } while (!moveOptions.isLast(choice) && !lastMoveValid);
         if (!moveOptions.isLast(choice)) {
             this.game.movePlayer(choice);
         }

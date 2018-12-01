@@ -3,8 +3,11 @@ package dungeon;
 import java.io.Serializable;
 import java.util.*;
 import characters.heroes.*;
+import characters.monsters.*;
 import dungeon.room.*;
 import pickups.*;
+import utils.Print;
+import exceptions.*;
 
 public class Dungeon implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -17,9 +20,25 @@ public class Dungeon implements Serializable {
 
     public Dungeon(Hero hero) {
         this.hero = hero;
-        // Random rnd = new Random();
-        // seed = rnd.nextInt(10000000);
         this.map = DungeonMapFactory.createDungeonMap(MAPSMAX_Y, MAPSMAX_X, this);
+        if (!findEntrance()) {
+            throw new RoomNotFoundException("There is not entrance");
+        }
+    }
+
+    private boolean findEntrance() {
+        for (int y = 0; y < this.MAPSMAX_Y; y++) {
+            for (int x = 0; x < this.MAPSMAX_X; x++) {
+                if (this.map[y][x].hasEntrance()) {
+                    this.heroY = y;
+                    this.heroX = x;
+                    return true;
+                }
+                //System.out.print("[Rm]");
+            }
+            //System.out.println();
+        }
+        return false;
     }
 
     public String toString() {
@@ -36,8 +55,22 @@ public class Dungeon implements Serializable {
     }
 
     public void beginBattle() {
-
+        MonsterFactory mf = new MonsterFactory();
+        Monster monster = mf.makeMonster(new Random().nextInt(4)+1);
+        battle(this.hero, monster);
     }
+
+    private static void battle(Hero theHero, Monster theMonster)
+	{	
+        System.out.println("There's a monster in the room!");
+		    //hero goes first
+			theHero.battleChoices(theMonster);
+
+			//monster's turn (provided it's still alive!)
+			if (theMonster.isAlive())
+			    theMonster.attack(theHero);
+
+	}//end battle method
 
     public boolean roomHasPit() {
         return this.map[heroY][heroX].hasPit();
@@ -49,7 +82,7 @@ public class Dungeon implements Serializable {
     }
 
     public ArrayList<PickupItem> getRoomContents() {
-        return null;
+        return map[this.heroY][this.heroX].roomsContents;
     }
 
     public boolean playerAtEnd() {
@@ -57,18 +90,6 @@ public class Dungeon implements Serializable {
     }
 
     public void movePlayer(int direction) {
-        // [Y] [X] change
-        // N is [-1][0]
-        // S is [+1][0]
-        // W is [0][-1]
-        // E is [0][+1]
-
-        int x = this.getHerosXCoord();
-        int y = this.getHerosYCoord();
-
-        // System.out.println("DEBUG --- printing this.getHerosXCoord() " +
-        // this.getHerosXCoord() + "; printing this.getHerosYCoord() " +
-        // this.getHerosYCoord() );
         switch (direction) {
 
         case 0:
@@ -81,7 +102,7 @@ public class Dungeon implements Serializable {
             this.setHeroX(this.getHeroX() - 1);
             break;
         case 2:
-            this.setHeroX(thid.getHeroX() + 1);
+            this.setHeroX(this.getHeroX() + 1);
             break;
         default:
             break;
@@ -89,7 +110,7 @@ public class Dungeon implements Serializable {
     }
 
     public void printPlayerLocation() {
-
+        Print.roomsUsingVisionPotion(this.map, this.heroX, this.heroY);
     }
 
     private void setHeroX(int x) {
@@ -109,15 +130,11 @@ public class Dungeon implements Serializable {
     }
 
     public boolean isMoveValid(int direction) {
-        // [Y] [X] change
-        // N is [-1][0]
-        // S is [+1][0]
-        // W is [0][-1]
-        // E is [0][+1]
+
         switch (direction) {
 
         case 0: // North
-            if (heroY - 1 >= 0)
+            if (heroY > 0)
                 return true;
             else
                 return false;

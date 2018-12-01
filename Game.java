@@ -4,6 +4,8 @@ import java.util.Random;
 import dungeon.Dungeon;
 import characters.heroes.*;
 import java.util.ArrayList;
+import utils.Menu;
+
 
 public class Game implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -38,6 +40,20 @@ public class Game implements Serializable {
                 return 2;
             }
             if (this.dungeon.roomHasMonster()) {
+                Menu readyBattle = new Menu("There's a Monster in the room!", "Battle", "Save Game");
+                int choice;
+                do {
+                    choice = readyBattle.getSelectionDefault();
+                    switch (choice) {
+                        case 0:
+                            break;
+                        case 1:
+                            DungeonAdventure.saveGameDefault(this);
+                            break;
+                        default:
+                            break;
+                    }
+                } while (choice != 0);
                 this.dungeon.beginBattle();
             }
             if (!hero.isAlive()) {
