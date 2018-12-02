@@ -1,3 +1,6 @@
+/**
+ * @author Luke Mattfeld
+ */
 import characters.heroes.*;
 import java.io.*;
 import java.util.Scanner;

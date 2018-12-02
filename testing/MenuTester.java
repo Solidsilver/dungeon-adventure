@@ -1,4 +1,8 @@
+/**
+ * @author Luke Mattfeld
+ */
 package testing;
+
 import utils.Menu;
 
 public class MenuTester {

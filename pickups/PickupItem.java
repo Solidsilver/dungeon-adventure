@@ -1,3 +1,6 @@
+/**
+ * @author Luke Mattfeld, Jeff Howes
+ */
 package pickups;
 import dungeon.Dungeon;
 

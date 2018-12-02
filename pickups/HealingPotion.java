@@ -1,3 +1,6 @@
+/**
+ * @author Jeff Howes, Luke Mattfeld
+ */
 package pickups;
 
 import java.io.Serializable;

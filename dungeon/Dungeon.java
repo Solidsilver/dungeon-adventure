@@ -1,5 +1,7 @@
+/**
+ * @author Luke Mattfeld, Jeff Howes
+ */
 package dungeon;
-
 import java.io.Serializable;
 import java.util.*;
 import characters.heroes.*;

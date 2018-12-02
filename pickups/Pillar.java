@@ -1,3 +1,6 @@
+/**
+ * @author Andrew Sales, Luke Mattfeld
+ */
 package pickups;
 
 import pickups.PickupItem;
