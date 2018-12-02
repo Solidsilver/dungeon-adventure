@@ -11,8 +11,8 @@ import exceptions.*;
 
 public class Dungeon implements Serializable {
     private static final long serialVersionUID = 1L;
-    private int MAPSMAX_X = 10; // 1 based
-    private int MAPSMAX_Y = 10; // 1 based
+    private int MAPSMAX_X = 4; // 1 based
+    private int MAPSMAX_Y = 4; // 1 based
     private int seed;
     private Room[][] map;
     private Hero hero;
@@ -157,6 +157,10 @@ public class Dungeon implements Serializable {
             return false;
         }
 
+    }
+
+    public void printFullDungeon() {
+        Print.fullMap(this.map, this.heroX, this.heroY);
     }
 
 }

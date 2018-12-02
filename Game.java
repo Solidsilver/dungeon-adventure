@@ -5,6 +5,7 @@ import dungeon.Dungeon;
 import characters.heroes.*;
 import java.util.ArrayList;
 import utils.Menu;
+import utils.Print;
 
 
 public class Game implements Serializable {
@@ -107,6 +108,22 @@ public class Game implements Serializable {
 
     public boolean isMoveValid(int dir) {
         return this.dungeon.isMoveValid(dir);
+    }
+
+    public void devOptions() {
+        Menu devOptions = new Menu("Dev Options", "Print entire map");
+        devOptions.add("Back");
+        int choice;
+        do {
+            choice = devOptions.getSelectionDefault();
+            switch (choice) {
+                case 0:
+                    dungeon.printFullDungeon();
+                    break;
+                default:
+                    break;
+            }
+        } while (!devOptions.isLast(choice));
     }
 
 }
