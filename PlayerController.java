@@ -22,7 +22,7 @@ public class PlayerController implements Serializable {
     }
 
     public int playTurn() {
-        Menu mnu = new Menu("~~~Play~~~", "Change Room", "Inventory", "Save Game", "Exit", "");
+        Menu mnu = new Menu("~~~Play~~~", "Change Room", "Inventory", "Save Game", "Exit", "Developer Options");
         int choice = mnu.getSelectionDefault();
 
         switch (choice) {
@@ -39,7 +39,9 @@ public class PlayerController implements Serializable {
             this.game.gameOver();
             return 0;
         case 4:
+            //System.out.println("dev unlocked");
             this.game.devOptions();
+            break;
         default:
             break;
         }

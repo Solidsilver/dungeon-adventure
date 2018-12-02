@@ -34,9 +34,9 @@ public class Dungeon implements Serializable {
                     this.heroX = x;
                     return true;
                 }
-                //System.out.print("[Rm]");
+                // System.out.print("[Rm]");
             }
-            //System.out.println();
+            // System.out.println();
         }
         return false;
     }
@@ -56,21 +56,22 @@ public class Dungeon implements Serializable {
 
     public void beginBattle() {
         MonsterFactory mf = new MonsterFactory();
-        Monster monster = mf.makeMonster(new Random().nextInt(4)+1);
+        Monster monster = mf.makeMonster(new Random().nextInt(4) + 1);
         battle(this.hero, monster);
     }
 
-    private static void battle(Hero theHero, Monster theMonster)
-	{	
+    private static void battle(Hero theHero, Monster theMonster) {
         System.out.println("There's a monster in the room!");
-		    //hero goes first
-			theHero.battleChoices(theMonster);
+        // hero goes first
+        do {
+            theHero.battleChoices(theMonster);
 
-			//monster's turn (provided it's still alive!)
-			if (theMonster.isAlive())
-			    theMonster.attack(theHero);
+            // monster's turn (provided it's still alive!)
+            if (theMonster.isAlive())
+                theMonster.attack(theHero);
+        } while (theHero.isAlive() && theMonster.isAlive());
 
-	}//end battle method
+    }// end battle method
 
     public boolean roomHasPit() {
         return this.map[heroY][heroX].hasPit();
