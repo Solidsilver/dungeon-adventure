@@ -78,7 +78,8 @@ public abstract class Hero extends DungeonCharacter implements Serializable {
 	}
 
 	public PickupItem useItem(int index) {
-		// return inventory[index].
+		this.inventory.get(index).use(this);
+		this.inventory.remove(index);
 		return null;
 	}
 

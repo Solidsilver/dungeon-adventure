@@ -163,8 +163,9 @@ public class Room implements Serializable {
 	}// end of method getRoomsContents
 	
 	//Check to see if the room contents contains "VisionPostion", "HealingPostion", or a "OOPillarPiece". 
-	public boolean RoomHasContentsOf(String typeOfContent) {		
-		if(roomsContents.contains(typeOfContent) )
+	public boolean RoomHasContentsOf(String typeOfContent) {
+				
+		if(roomsContents.toString().contains(typeOfContent))
 			return true;
 		return false;
 	}

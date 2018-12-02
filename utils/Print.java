@@ -64,7 +64,7 @@ public class Print {
 				if(y == herosYLocation && xM == herosXLocation)
 					System.out.print ( (xM == 0 ? "* " : "| ") + "$" + " "); //if hero is standing in the room Print a $.
 				else
-					System.out.print ( (xM == 0 ? "* " : "| ") + roomsArray[y][xM].getRoomsContents() + " "); 
+					System.out.print ( (xM == 0 ? "* " : "| ") + roomsArray[y][xM].getRoomsContentsLetter() + " "); 
 			}//end inner for loop
 			if(xM == roomsArray[0].length)
 			System.out.println("*");		

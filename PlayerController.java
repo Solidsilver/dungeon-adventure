@@ -66,7 +66,7 @@ public class PlayerController implements Serializable {
         mnu.add("Back");
         int choice = mnu.getSelectionDefault();
         if (!mnu.isLast(choice)) {
-            this.hero.useItem(choice - 1);
+            this.hero.useItem(choice);
         }
     }
 
