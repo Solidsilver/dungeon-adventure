@@ -7,6 +7,12 @@ import Attack.IAttack;
 import characters.DungeonCharacter;
 import pickups.PickupItem;
 
+/*
+ **********************************
+ * Author: Andrew Sales           *
+ * ********************************
+*/
+
 public abstract class Hero extends DungeonCharacter implements Serializable {
 
 	protected double chanceToBlock;
@@ -70,9 +76,6 @@ public abstract class Hero extends DungeonCharacter implements Serializable {
 			if (items.get(0).getName() == "Pillar")
 				numPillars++;
 			this.inventory.addAll(items);
-			/*
-			 * for(int i = 0; i < items.size(); i++) { inventory.add(items.get(i)); }
-			 */
 		}
 
 	}

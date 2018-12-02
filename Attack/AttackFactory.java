@@ -2,6 +2,12 @@ package Attack;
 import java.io.Serializable;
 import java.util.HashMap;
 
+/*
+ **********************************
+ * Author: Andrew Sales           *
+ * ********************************
+*/
+
 public class AttackFactory implements Serializable {
 
 	private HashMap<String, IAttack> attackMap = new HashMap<String, IAttack>();

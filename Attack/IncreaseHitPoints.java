@@ -5,6 +5,12 @@ import java.io.Serializable;
 import characters.DungeonCharacter;
 import characters.heroes.Sorceress;
 
+/*
+ **********************************
+ * Author: Andrew Sales           *
+ * ********************************
+*/
+
 public class IncreaseHitPoints implements IAttack, Serializable{
 
 	public void action(DungeonCharacter character, DungeonCharacter opponent) 

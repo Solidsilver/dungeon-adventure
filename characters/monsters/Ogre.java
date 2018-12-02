@@ -1,5 +1,11 @@
 package characters.monsters;
 
+/*
+ **********************************
+ * Author: Andrew Sales           *
+ * ********************************
+*/
+
 public class Ogre extends Monster{
 
 	private static final String OgreName = "Oscar the Ogre";

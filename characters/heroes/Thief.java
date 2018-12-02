@@ -1,6 +1,10 @@
 package characters.heroes;
 
-import Attack.IAttack;
+/*
+ **********************************
+ * Author: Andrew Sales           *
+ * ********************************
+*/
 
 public class Thief extends Hero{
 

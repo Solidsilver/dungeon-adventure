@@ -9,6 +9,12 @@ import Attack.AttackFactory;
 import Attack.IAttack;
 import characters.heroes.HeroFactory;
 
+/*
+ **********************************
+ * Author: Andrew Sales           *
+ * ********************************
+*/
+
 public abstract class DungeonCharacter implements Serializable {
 
 	protected String name;

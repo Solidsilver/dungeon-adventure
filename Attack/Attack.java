@@ -2,6 +2,12 @@ package Attack;
 
 import java.io.Serializable;
 
+/*
+ **********************************
+ * Author: Andrew Sales           *
+ * ********************************
+*/
+
 import characters.DungeonCharacter;
 
 public class Attack implements IAttack, Serializable{
