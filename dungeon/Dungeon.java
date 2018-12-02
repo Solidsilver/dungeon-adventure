@@ -13,8 +13,8 @@ import exceptions.*;
 
 public class Dungeon implements Serializable {
     private static final long serialVersionUID = 1L;
-    private int MAPSMAX_X = 4; // 1 based
-    private int MAPSMAX_Y = 4; // 1 based
+    private int MAPSMAX_X = 10; // 1 based
+    private int MAPSMAX_Y = 10; // 1 based
     private int seed;
     private Room[][] map;
     private Hero hero;
@@ -60,10 +60,10 @@ public class Dungeon implements Serializable {
         MonsterFactory mf = new MonsterFactory();
         Monster monster = mf.makeMonster(new Random().nextInt(4) + 1);
         battle(this.hero, monster);
+        this.map[this.heroY][this.heroX].setHasMonster(false);
     }
 
     private static void battle(Hero theHero, Monster theMonster) {
-        System.out.println("There's a monster in the room!");
         // hero goes first
         do {
             theHero.battleChoices(theMonster);
