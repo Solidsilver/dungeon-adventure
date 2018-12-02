@@ -1,5 +1,12 @@
 package characters.heroes;
 import java.util.ArrayList;
+
+/*
+ **********************************
+ * Author: Andrew Sales           *
+ * ********************************
+*/
+
 public class HeroFactory {
 	private ArrayList<String> types;
 

@@ -1,5 +1,11 @@
 package characters.heroes;
 
+/*
+ **********************************
+ * Author: Andrew Sales           *
+ * ********************************
+*/
+
 public class Warrior extends Hero{
 
 	private static final String WarriorName = "Warrior";

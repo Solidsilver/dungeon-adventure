@@ -3,6 +3,12 @@ import java.io.Serializable;
 
 import characters.DungeonCharacter;
 
+/*
+ **********************************
+ * Author: Andrew Sales           *
+ * ********************************
+*/
+
 public abstract class Monster extends DungeonCharacter implements Serializable {
 
 	protected double chanceToHeal;

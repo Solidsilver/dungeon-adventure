@@ -1,4 +1,11 @@
 package characters.monsters;
+
+/*
+ **********************************
+ * Author: Andrew Sales           *
+ * ********************************
+*/
+
 public class MonsterFactory {
 
 	public Monster makeMonster(int type)

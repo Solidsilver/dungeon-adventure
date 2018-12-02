@@ -1,5 +1,11 @@
 package characters.monsters;
 
+/*
+ **********************************
+ * Author: Andrew Sales           *
+ * ********************************
+*/
+
 public class Skeleton extends Monster{
 
 	private static final String SkeletonName = "Sargath the Skeleton";
