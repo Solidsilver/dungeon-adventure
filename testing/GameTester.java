@@ -1,4 +1,4 @@
-package tempPackage;
+package testing;
 
 public class GameTester {
 

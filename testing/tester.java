@@ -1,3 +1,4 @@
+package testing;
 import characters.DungeonCharacter;
 import characters.heroes.Hero;
 import characters.heroes.TomTheCapaul;

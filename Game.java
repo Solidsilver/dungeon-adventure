@@ -111,7 +111,7 @@ public class Game implements Serializable {
     }
 
     public void devOptions() {
-        Menu devOptions = new Menu("Dev Options", "Print entire map");
+        Menu devOptions = new Menu("Dev Options", "Print entire map", "+1000 hitpoints");
         devOptions.add("Back");
         int choice;
         do {
@@ -120,6 +120,8 @@ public class Game implements Serializable {
                 case 0:
                     dungeon.printFullDungeon();
                     break;
+                case 1:
+                    this.hero.setHitPoints(this.hero.getHitPoints() + 1000);
                 default:
                     break;
             }
