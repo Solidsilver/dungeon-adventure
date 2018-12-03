@@ -110,6 +110,11 @@ public abstract class Hero extends DungeonCharacter implements Serializable {
 		}
 
 	}// end method
+	
+	public String getSpecialAttackName()
+	{
+		return this.specialAttack;
+	}
 
 	public int getNumTurns() {
 		return numTurns;
