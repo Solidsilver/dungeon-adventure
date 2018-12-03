@@ -42,8 +42,11 @@ public class Game implements Serializable {
     private int playGame() {
         int returnFlag = 0;
         while (!this.isGameOver) {
-            if (this.dungeon.playerAtEnd() && this.hero.hasAllPillars()) {
-                return 2;
+            if (this.dungeon.playerAtEnd()) {
+                if (this.hero.hasAllPillars()) {
+                    return 2;
+                }
+                System.out.println("You've reached the exit, \nbut you don't have all the pillars");
             }
             if (this.dungeon.roomHasMonster()) {
                 Menu readyBattle = new Menu("There's a Monster in the room!", "Battle", "Save Game");
@@ -74,10 +77,6 @@ public class Game implements Serializable {
             ArrayList<PickupItem> givePlayer = this.dungeon.getRoomContents();
             this.hero.addToInventory(givePlayer);
             System.out.println("You Picked up: " + givePlayer);
-            /*for (PickupItem pi: givePlayer) {
-                System.out.print(pi + ", ");
-            }
-            System.out.println();*/
             returnFlag = pController.playTurn();
         }
         return returnFlag;
