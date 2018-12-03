@@ -1,3 +1,6 @@
+/**
+ * @author Jeff Howes
+ */
 package testing;
 
 /*public class GameTester {

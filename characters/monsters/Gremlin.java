@@ -1,11 +1,8 @@
 package characters.monsters;
 
-/*
- **********************************
- * Author: Andrew Sales           *
- * ********************************
-*/
-
+/**
+ * @author Andrew Sales
+ */
 public class Gremlin extends Monster{
 
 	private static final String GremlinName = "Gnarltooth the Gremlin";

@@ -1,10 +1,8 @@
 package characters.heroes;
 
-/*
- **********************************
- * Author: Andrew Sales           *
- * ********************************
-*/
+/**
+ * @author Andrew Sales
+ */
 
 public class StuTheSteiner extends Hero{
 

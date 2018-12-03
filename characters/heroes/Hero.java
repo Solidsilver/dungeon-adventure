@@ -7,11 +7,9 @@ import Attack.IAttack;
 import characters.DungeonCharacter;
 import pickups.PickupItem;
 
-/*
- **********************************
- * Author: Andrew Sales           *
- * ********************************
-*/
+/**
+ * @author Andrew Sales
+ */
 
 public abstract class Hero extends DungeonCharacter implements Serializable {
 

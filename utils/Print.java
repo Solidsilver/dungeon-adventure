@@ -1,3 +1,6 @@
+/**
+ * @author Jeff Howes
+ */
 package utils;
 
 import dungeon.room.*;

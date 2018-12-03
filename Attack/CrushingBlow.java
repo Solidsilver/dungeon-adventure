@@ -4,11 +4,9 @@ import java.io.Serializable;
 
 import characters.DungeonCharacter;
 
-/*
- **********************************
- * Author: Andrew Sales           *
- * ********************************
-*/
+/**
+ * @author Andrew Sales
+ */
 
 public class CrushingBlow implements IAttack, Serializable{
 	

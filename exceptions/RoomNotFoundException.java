@@ -1,3 +1,6 @@
+/**
+ * @author Luke Mattfeld
+ */
 package exceptions;
 
 public class RoomNotFoundException extends RuntimeException {

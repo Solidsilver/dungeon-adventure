@@ -1,4 +1,8 @@
-//Author: Luke Mattfeld
+
+/**
+ * @author Luke Mattfeld
+ */
+
 package utils;
 import java.util.*;
 

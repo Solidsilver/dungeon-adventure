@@ -2,11 +2,9 @@ package Attack;
 
 import characters.DungeonCharacter;
 
-/*
- **********************************
- * Author: Andrew Sales           *
- * ********************************
-*/
+/**
+ * @author Andrew Sales
+ */
 
 public interface IAttack {
 	

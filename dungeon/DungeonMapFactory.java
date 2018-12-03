@@ -1,3 +1,6 @@
+/**
+ * @author Jeff Howes
+ */
 package dungeon;
 
 import java.io.Serializable;

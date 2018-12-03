@@ -2,11 +2,9 @@ package Attack;
 
 import java.io.Serializable;
 
-/*
- **********************************
- * Author: Andrew Sales           *
- * ********************************
-*/
+/**
+ * @author Andrew Sales
+ */
 
 import characters.DungeonCharacter;
 

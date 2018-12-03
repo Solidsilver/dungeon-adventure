@@ -1,10 +1,8 @@
 package characters.monsters;
 
-/*
- **********************************
- * Author: Andrew Sales           *
- * ********************************
-*/
+/**
+ * @author Andrew Sales
+ */
 
 public class BrianTheCamp extends Monster{
 

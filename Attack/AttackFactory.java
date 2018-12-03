@@ -2,11 +2,9 @@ package Attack;
 import java.io.Serializable;
 import java.util.HashMap;
 
-/*
- **********************************
- * Author: Andrew Sales           *
- * ********************************
-*/
+/**
+ * @author Andrew Sales
+ */
 
 public class AttackFactory implements Serializable {
 
