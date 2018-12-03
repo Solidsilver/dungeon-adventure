@@ -10,11 +10,12 @@ import dungeon.room.*;
 import pickups.*;
 import utils.Print;
 import exceptions.*;
+import utils.Menu;
 
 public class Dungeon implements Serializable {
     private static final long serialVersionUID = 1L;
-    private int MAPSMAX_X = 10; // 1 based
-    private int MAPSMAX_Y = 10; // 1 based
+    private int MAPSMAX_X = 1000; // 1 based
+    private int MAPSMAX_Y = 1000; // 1 based
     private int seed;
     private Room[][] map;
     private Hero hero;
@@ -66,6 +67,18 @@ public class Dungeon implements Serializable {
     private static void battle(Hero theHero, Monster theMonster) {
         // hero goes first
         do {
+            Menu attacks = new Menu("Available Attacks:", "Attack", theHero.getSpecialAttackName());
+            int choice = attacks.getSelectionDefault();
+            switch (choice) {
+                case 0:
+                    theHero.attack(theMonster);
+                    break;
+                case 1:
+                    theHero.specialAction(theMonster);
+                    break;
+                default:
+                    break;
+            }
             theHero.battleChoices(theMonster);
 
             // monster's turn (provided it's still alive!)

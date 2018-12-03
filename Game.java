@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.Random;
 
 import dungeon.Dungeon;
+import pickups.PickupItem;
 import characters.heroes.*;
 import java.util.ArrayList;
 import utils.Menu;
@@ -70,8 +71,12 @@ public class Game implements Serializable {
             if (!hero.isAlive()) {
                 return 1;
             }
-            this.hero.addToInventory(this.dungeon.getRoomContents());
-            
+            ArrayList<PickupItem> givePlayer = this.dungeon.getRoomContents();
+            this.hero.addToInventory(givePlayer);
+            System.out.print("You Picked up");
+            for (PickupItem pi: givePlayer) {
+                System.out.print(pi + ", ");
+            }
             returnFlag = pController.playTurn();
         }
         return returnFlag;
