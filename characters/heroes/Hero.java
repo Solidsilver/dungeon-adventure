@@ -107,7 +107,7 @@ public abstract class Hero extends DungeonCharacter implements Serializable {
 
 	public void subtractHitPoints(int hitPoints) {
 		if (defend()) {
-			System.out.println(name + " BLOCKED the attack!");
+			System.out.println(name + " did not take damage!");
 		} else {
 			super.subtractHitPoints(hitPoints);
 		}

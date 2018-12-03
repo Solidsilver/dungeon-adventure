@@ -69,6 +69,7 @@ public class Game implements Serializable {
                 return 1;
             }
             if (this.dungeon.roomHasPit()) {
+                System.out.println("You fell in a pit!");
                 this.dungeon.fallInPit();
             }
             if (!hero.isAlive()) {
@@ -76,7 +77,9 @@ public class Game implements Serializable {
             }
             ArrayList<PickupItem> givePlayer = this.dungeon.getRoomContents();
             this.hero.addToInventory(givePlayer);
-            System.out.println("You Picked up: " + givePlayer);
+            if (givePlayer != null && !givePlayer.isEmpty()) {
+                System.out.println("You Picked up: " + givePlayer);
+            }
             returnFlag = pController.playTurn();
         }
         return returnFlag;

@@ -98,7 +98,7 @@ public class Dungeon implements Serializable {
     }
 
     public ArrayList<PickupItem> getRoomContents() {
-        return map[this.heroY][this.heroX].roomsContents;
+        return map[this.heroY][this.heroX].getRoomsContents();
     }
 
     public boolean playerAtEnd() {
