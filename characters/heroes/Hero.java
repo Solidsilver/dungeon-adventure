@@ -19,8 +19,6 @@ public abstract class Hero extends DungeonCharacter implements Serializable {
 
 	private ArrayList<PickupItem> inventory;
 	private int numPillars;
-	private int numHealingPotions;
-	private int numVisionPotions;
 	protected String specialAttack;
 
 	public Hero(String name, int hitPoints, int attackSpeed, double chanceToHit, int damageMin, int damageMax,

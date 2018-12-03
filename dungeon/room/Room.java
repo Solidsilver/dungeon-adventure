@@ -19,7 +19,10 @@ import dungeon.Dungeon;
  */
 public class Room implements Serializable {
 
-	public ArrayList<PickupItem> roomsContents = new ArrayList<PickupItem>();  //HealingPostion, VisionPostion, OOPillarPiece
+	private static final long serialVersionUID = 1L;
+
+	public ArrayList<PickupItem> roomsContents = new ArrayList<PickupItem>(); // HealingPostion, VisionPostion,
+																				// OOPillarPiece
 	
 	private Dungeon dungeon;
 	private boolean containsEnterence = false;
