@@ -58,8 +58,8 @@ public class DungeonAdventure {
 		Game gme = null;
 		try {
 			File fin = new File(System.getProperty("user.dir") + "/saves/" + saveName + ".dga");
-			if (!fin.exists()) {
-				System.out.println("Save " + saveName + " does not exist");
+			if (fin == null || !fin.exists()) {
+				System.out.println("Save " + saveName + " does not exist, please load new game");
 			} else {
 				FileInputStream FisIn = new FileInputStream(fin);
 				ObjectInputStream gameIn = new ObjectInputStream(FisIn);
