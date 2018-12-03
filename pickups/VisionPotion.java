@@ -7,7 +7,7 @@ import dungeon.Dungeon;
 import characters.DungeonCharacter;
 
 public class VisionPotion extends PickupItem {
-    private Dungeon dungeon;
+    private static final long serialVersionUID = 1L;
     public VisionPotion(Dungeon dungeon) {
         super("Vision Potion", dungeon);
     }

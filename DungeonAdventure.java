@@ -12,7 +12,7 @@ public class DungeonAdventure {
 	public static void main(String[] args) {
 		Game game = null;
 		int menuChoice = -1;
-		Menu mm = new Menu("***** Dungeon Adventure *****", "New Game", "Resume Game", "Load Save", "Exit");
+		Menu mm = new Menu("***** Dungeon Adventure *****", "New Game", "Resume Game", "Exit");
 		do {
 			menuChoice = mm.getSelectionDefault();
 			switch (menuChoice) {
@@ -26,10 +26,11 @@ public class DungeonAdventure {
 					System.out.println("No game to resume");
 				}
 				break;
-			case 2:
+			/*case 2:
 				game = loadGame();
 				break;
-			case 3:
+				*/
+			case 2:
 				game = null;
 				break;
 			default:

@@ -9,6 +9,7 @@ import java.io.Serializable;
 import characters.DungeonCharacter;
 
 public abstract class PickupItem implements Serializable {
+    private static final long serialVersionUID = 1L;
     private String name;
     protected Dungeon inDungeon;
 

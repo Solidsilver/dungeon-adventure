@@ -15,6 +15,7 @@ import pickups.PickupItem;
 
 public abstract class Hero extends DungeonCharacter implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	protected double chanceToBlock;
 	protected int numTurns;
 
