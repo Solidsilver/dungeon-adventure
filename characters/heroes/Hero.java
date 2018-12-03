@@ -72,8 +72,10 @@ public abstract class Hero extends DungeonCharacter implements Serializable {
 
 	public void addToInventory(ArrayList<PickupItem> items) {
 		if (items != null && items.size() > 0) {
-			if (items.get(0).getName() == "Pillar")
+			for (PickupItem itm: items) {
+				if (itm.getName().equals("Pillar")) 
 				numPillars++;
+			}
 			this.inventory.addAll(items);
 		}
 
