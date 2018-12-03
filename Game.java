@@ -73,11 +73,11 @@ public class Game implements Serializable {
             }
             ArrayList<PickupItem> givePlayer = this.dungeon.getRoomContents();
             this.hero.addToInventory(givePlayer);
-            System.out.print("You Picked up");
-            for (PickupItem pi: givePlayer) {
+            System.out.println("You Picked up: " + givePlayer);
+            /*for (PickupItem pi: givePlayer) {
                 System.out.print(pi + ", ");
             }
-            System.out.println();
+            System.out.println();*/
             returnFlag = pController.playTurn();
         }
         return returnFlag;

@@ -22,4 +22,8 @@ public abstract class PickupItem implements Serializable {
     public String getName() {
         return this.name;
     }
+
+    public String toString() {
+        return this.getName();
+    }
 }
