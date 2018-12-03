@@ -88,7 +88,7 @@ public class Game implements Serializable {
     private void endGame(int endType) {
         switch (endType) {
             case 0:
-                System.out.println("Come again soon");
+                System.out.println("Exiting to main menu");
                 break;
             case 1:
                 System.out.println("You died! Try again...");

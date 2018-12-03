@@ -9,6 +9,7 @@ import utils.*;
 
 public class DungeonAdventure {
 	public static void main(String[] args) {
+		checkSaveDir();
 		Game game = null;
 		int menuChoice = -1;
 		Menu mm = new Menu("***** Dungeon Adventure *****", "New Game", "Resume Game", "Exit");
@@ -22,7 +23,8 @@ public class DungeonAdventure {
 				if (getSaveList().contains("last_saved")) {
 					game = loadGameDefault();
 				} else {
-					System.out.println("No game to resume");
+					System.out.println("No game to resume. Starting a new game...");
+					game = newGame();
 				}
 				break;
 			/*case 2:
@@ -40,6 +42,13 @@ public class DungeonAdventure {
 			}
 		} while (!mm.isLast(menuChoice));
 		System.out.println("Come again soon!");
+	}
+
+	private static void checkSaveDir() {
+		File saveDir = new File(System.getProperty("user.dir") + "/saves");
+		if (!saveDir.exists()) {
+			saveDir.mkdir();
+		}
 	}
 
 	private static Game loadGame() {
@@ -68,11 +77,11 @@ public class DungeonAdventure {
 				FisIn.close();
 			}
 		} catch (IOException i) {
-			System.out.println("Error reading file");
-			i.printStackTrace();
+			System.out.println("Error reading file. Please start a new game.");
+			//i.printStackTrace();
 		} catch (ClassNotFoundException c) {
 			System.out.println("Game class not found");
-			c.printStackTrace();
+			//c.printStackTrace();
 		}
 		return gme;
 	}
@@ -82,6 +91,7 @@ public class DungeonAdventure {
 	}
 
 	private static ArrayList<String> getSaveList() {
+		checkSaveDir();
 		File fin = new File(System.getProperty("user.dir") + "/saves");
 		ArrayList<String> saves = new ArrayList<>();
 		for (String s : fin.list()) {
@@ -111,7 +121,7 @@ public class DungeonAdventure {
 			System.out.println("Game Saved");
 		} catch (IOException i) {
 			System.out.println("Error saving game");
-			i.printStackTrace();
+			//i.printStackTrace();
 		}
 
 	}
