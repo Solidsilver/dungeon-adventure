@@ -161,7 +161,7 @@ public class Room implements Serializable {
 			return 'H'; 
 		if(RoomHasContentsOf("VisionPostion") && !RoomHasContentsOf("HealingPostion") && !RoomHasContentsOf("OOPillarPiece") && !containsPit && !containsMonster) //contains only a  vision potion
 			return 'V'; 		
-		if( !containsPit  && !containsMonster && roomsContents.size() > 0) //don't not contain any items
+		if( !containsPit  && !containsMonster && roomsContents.size() == 0) //don't not contain any items
 			return 'E'; //Room is Empty
 		else
 			return 'M'; // multiple items must be in the room. 

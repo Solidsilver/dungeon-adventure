@@ -27,8 +27,6 @@ public abstract class Hero extends DungeonCharacter implements Serializable {
 		this.chanceToBlock = chanceToBlock;
 		this.specialAttack = specialAttack;
 		numPillars = 0;
-		numHealingPotions = 0;
-		numVisionPotions = 0;
 		this.inventory = new ArrayList<>();
 	}
 
