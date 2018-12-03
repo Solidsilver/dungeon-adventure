@@ -46,7 +46,7 @@ public class Game implements Serializable {
                 if (this.hero.hasAllPillars()) {
                     return 2;
                 }
-                System.out.println("You've reached the exit, \nbut you don't have all the pillars");
+                System.out.println("You've reached the exit, \nbut you don't have all the pillars: " + this.hero.getPillarCount() + "/4");
             }
             if (this.dungeon.roomHasMonster()) {
                 Menu readyBattle = new Menu("There's a Monster in the room!", "Battle", "Save Game");

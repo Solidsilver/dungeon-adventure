@@ -17,10 +17,10 @@ public abstract class Hero extends DungeonCharacter implements Serializable {
 	protected double chanceToBlock;
 	protected int numTurns;
 
-	ArrayList<PickupItem> inventory;
-	int numPillars;
-	int numHealingPotions;
-	int numVisionPotions;
+	private ArrayList<PickupItem> inventory;
+	private int numPillars;
+	private int numHealingPotions;
+	private int numVisionPotions;
 	protected String specialAttack;
 
 	public Hero(String name, int hitPoints, int attackSpeed, double chanceToHit, int damageMin, int damageMax,
@@ -41,6 +41,10 @@ public abstract class Hero extends DungeonCharacter implements Serializable {
 
 	public boolean hasAllPillars() {
 		return numPillars == 4;
+	}
+
+	public int getPillarCount() {
+		return this.numPillars;
 	}
 
 	public boolean defend() {
