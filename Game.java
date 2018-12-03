@@ -77,6 +77,7 @@ public class Game implements Serializable {
             for (PickupItem pi: givePlayer) {
                 System.out.print(pi + ", ");
             }
+            System.out.println();
             returnFlag = pController.playTurn();
         }
         return returnFlag;

@@ -14,8 +14,8 @@ import utils.Menu;
 
 public class Dungeon implements Serializable {
     private static final long serialVersionUID = 1L;
-    private int MAPSMAX_X = 1000; // 1 based
-    private int MAPSMAX_Y = 1000; // 1 based
+    private int MAPSMAX_X = 5; // 1 based
+    private int MAPSMAX_Y = 5; // 1 based
     private int seed;
     private Room[][] map;
     private Hero hero;
