@@ -13,6 +13,7 @@ public class AttackFactory implements Serializable {
 	public IAttack getAttack(String attackName) {
 		
 		IAttack attack = attackMap.get(attackName);
+		
 		if(!attackMap.containsValue(attack))
 		{
 			switch(attackName)
