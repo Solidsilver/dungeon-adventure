@@ -125,6 +125,16 @@ public abstract class Hero extends DungeonCharacter implements Serializable {
 		this.numTurns += amount;
 	}
 
+	@Override
+	public String toString() {
+		String ret = "******************\n";
+		ret += this.getName() + "\'s Stats:\n";
+		ret += "Health: \t" + this.getHitPoints() + " hp\n";
+		ret += "Inventory:\t" + this.inventory.size() + " items\n";
+		ret += "Pillars:\t" + this.numPillars + "/4 collected\n";
+		return ret;
+	}
+
 	// get inventory method, returns arraylist of strings
 	// use item function
 }

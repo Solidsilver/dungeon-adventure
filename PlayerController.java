@@ -20,13 +20,13 @@ public class PlayerController implements Serializable {
         Menu heroSelection;// = new Menu("Choose a Character:", "Warrior", "Theif", "Sorceress");
         HeroFactory hf = new HeroFactory();
         heroSelection = new Menu("Choose a Character: ", hf.getOptions());
-        int choice = heroSelection.getSelectionDefault();
+        int choice = heroSelection.getSelection(2, false);
         return hf.makeHero(choice);
     }
 
     public int playTurn() {
-        Menu mnu = new Menu("~~~Play~~~", "Change Room", "Inventory", "Save Game", "Exit", "Developer Options");
-        int choice = mnu.getSelectionDefault();
+        Menu mnu = new Menu("~~~Play~~~", "Change Room", "Inventory", "Stats", "Save Game", "Exit", "Developer Options");
+        int choice = mnu.getSelection(3);
 
         switch (choice) {
         case 0:
@@ -36,12 +36,15 @@ public class PlayerController implements Serializable {
             inventory();
             break;
         case 2:
-            DungeonAdventure.saveGameDefault(this.game);
+            System.out.println(this.hero);
             break;
         case 3:
+            DungeonAdventure.saveGameDefault(this.game);
+            break;
+        case 4:
             this.game.gameOver();
             return 0;
-        case 4:
+        case 5:
             //System.out.println("dev unlocked");
             this.game.devOptions();
             break;
@@ -52,7 +55,7 @@ public class PlayerController implements Serializable {
     }
 
     private void changeRoom() {
-        Menu moveOptions = new Menu("Rooms", "North", "South", "East", "West");
+        Menu moveOptions = new Menu("Rooms", "North", "South", "East ", "West");
         moveOptions.add("Back");
         int choice;
         boolean lastMoveValid = true;
@@ -60,7 +63,7 @@ public class PlayerController implements Serializable {
             if (!lastMoveValid) {
                 System.out.println("Invalid Move");
             }
-            choice = moveOptions.getSelectionDefault();
+            choice = moveOptions.getSelection(2, false);
             lastMoveValid = this.game.isMoveValid(choice);
         } while (!moveOptions.isLast(choice) && !lastMoveValid);
         if (!moveOptions.isLast(choice)) {
@@ -71,7 +74,7 @@ public class PlayerController implements Serializable {
     private void inventory() {
         Menu mnu = new Menu(this.hero.getName() + "'s Inventory", this.hero.inventoryToString());
         mnu.add("Back");
-        int choice = mnu.getSelectionDefault();
+        int choice = mnu.getSelection(2, false);
         if (!mnu.isLast(choice)) {
             this.hero.useItem(choice);
         }

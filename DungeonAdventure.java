@@ -14,7 +14,7 @@ public class DungeonAdventure {
 		int menuChoice = -1;
 		Menu mm = new Menu("***** Dungeon Adventure *****", "New Game", "Resume Game", "Exit");
 		do {
-			menuChoice = mm.getSelectionDefault();
+			menuChoice = mm.getSelection(2, false);
 			switch (menuChoice) {
 			case 0:
 				game = newGame();

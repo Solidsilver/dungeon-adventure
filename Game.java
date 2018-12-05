@@ -127,7 +127,7 @@ public class Game implements Serializable {
         devOptions.add("Back");
         int choice;
         do {
-            choice = devOptions.getSelectionDefault();
+            choice = devOptions.getSelection(3);
             switch (choice) {
                 case 0:
                     dungeon.printFullDungeon();
