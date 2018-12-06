@@ -26,7 +26,7 @@ public class Attack implements IAttack, Serializable{
 		}//end if can attack
 		else
 		{
-			System.out.println(opponent.getName() + "'s attack on " + opponent.getName() + " failed!");
+			System.out.println(character.getName() + "'s attack on " + opponent.getName() + " failed!");
 			System.out.println();
 		}//end else
 	}
