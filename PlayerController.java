@@ -32,9 +32,11 @@ public class PlayerController implements Serializable {
         switch (choice) {
         case 0:
             changeRoom();
+            Menu.clearScreen();
             break;
         case 1:
             inventory();
+            Menu.clearScreen();
             break;
         case 2:
             System.out.println(this.hero);
@@ -48,6 +50,7 @@ public class PlayerController implements Serializable {
         case 5:
             //System.out.println("dev unlocked");
             this.game.devOptions();
+            Menu.clearScreen();
             break;
         default:
             break;
