@@ -28,23 +28,28 @@ public class PlayerController implements Serializable {
     public int playTurn() {
         Menu mnu = new Menu("~~~Play~~~", "Change Room", "Inventory", "Stats", "Save Game", "Exit", "Developer Options");
         int choice = mnu.getSelection(3);
-        Menu.clearScreen();
+        //Menu.clearScreen();
         switch (choice) {
         case 0:
+            Menu.clearScreen();
             changeRoom();
             Menu.clearScreen();
             break;
         case 1:
-            inventory();
             Menu.clearScreen();
+            inventory();
+            //Menu.clearScreen();
             break;
         case 2:
+            Menu.clearScreen();
             System.out.println(this.hero);
             break;
         case 3:
+            Menu.clearScreen();
             DungeonAdventure.saveGameDefault(this.game);
             break;
         case 4:
+            Menu.clearScreen();
             this.game.gameOver();
             return 0;
         case 5:
