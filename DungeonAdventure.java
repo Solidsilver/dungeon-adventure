@@ -74,7 +74,7 @@ public class DungeonAdventure {
 		checkSaveDir();
 		Game game = null;
 		int menuChoice = -1;
-		Menu mm = new Menu("***** Dungeon Adventure *****", "New Game", "Resume Game", "Exit");
+		Menu mm = new Menu("***** Dungeon Adventure *****", "New Game", "Resume Game", "How to Play", "About", "Exit");
 		do {
 			menuChoice = mm.getSelection(2, false);
 			switch (menuChoice) {
@@ -94,6 +94,12 @@ public class DungeonAdventure {
 				break;
 				*/
 			case 2:
+				howToPlay();
+				break;
+			case 3:
+				about();
+				break;
+			case 4:
 				game = null;
 				break;
 			default:
@@ -104,6 +110,40 @@ public class DungeonAdventure {
 			}
 		} while (!mm.isLast(menuChoice));
 		System.out.println("Come again soon!");
+	}
+
+	private static void about() {
+		System.out.print("Creators:\n"
+						+ "- Jeff Howes\n"
+						+ "- Andrew Sales\n"
+						+ "- Luke Mattfeld\n"
+						+ "Dungeon Adventure was created as a project for CSCD349\n"
+						+ "at Eastern Washington University. The goal was to make use\n"
+						+ "of Design Patterns to make the game more easily extensible,\n"
+						+ "buildable in parts, and intent revieling.\n\n"
+						+ "(press any key to continue)");
+		new Scanner(System.in).nextLine();
+		System.out.println();
+	}
+
+	private static void howToPlay() {
+		System.out.print("Welcome to Dungeon Adventure!\n"
+							+ "Your characther finds themselves locked in an old Dungeon.\n"
+							+ "The only way to escape is to find the legendary Pillars of Object Oriented Programming...\n\n"
+							+ "Begin starting a new game, and choosing a character.\n"
+							+ "Every character has different attributes and attack styles.\n"
+							+ "You will then need to navigate through rooms of the Dungeon:\n"
+							+ "Rooms can contain Pits, Monsters, magic potions, and treasure.\n"
+							+ "If you encounter a monster in a room, you must fight it.\n"
+							+ "Vision potions allow you to see what's around you.\n"
+							+ "Healing potions give you strength to continue.\n"
+							+ "Throughout the Dungeon are scattered the 4 pillars of OO.\n"
+							+ "You must find all of them and make it to the exit to win..\n"
+							+ "You may save the game at any time, and when you restart the game, just select 'Resume Game'.\n"
+							+ "Have fun!\n\n"
+							+ "(pressy any key to continue)");
+		new Scanner(System.in).nextLine();
+		System.out.println();
 	}
 
 	private static void checkSaveDir() {
