@@ -76,6 +76,7 @@ public class DungeonAdventure {
 		int menuChoice = -1;
 		Menu mm = new Menu("***** Dungeon Adventure *****", "New Game", "Resume Game", "How to Play", "About", "Exit");
 		do {
+			Menu.clearScreen();
 			menuChoice = mm.getSelection(2, false);
 			switch (menuChoice) {
 			case 0:
@@ -89,15 +90,13 @@ public class DungeonAdventure {
 					game = newGame();
 				}
 				break;
-			/*case 2:
-				game = loadGame();
-				break;
-				*/
 			case 2:
 				howToPlay();
+				game = null;
 				break;
 			case 3:
 				about();
+				game = null;
 				break;
 			case 4:
 				game = null;
@@ -113,6 +112,7 @@ public class DungeonAdventure {
 	}
 
 	private static void about() {
+		Menu.clearScreen();
 		System.out.print("Creators:\n"
 						+ "- Jeff Howes\n"
 						+ "- Andrew Sales\n"
@@ -127,6 +127,7 @@ public class DungeonAdventure {
 	}
 
 	private static void howToPlay() {
+		Menu.clearScreen();
 		System.out.print("Welcome to Dungeon Adventure!\n"
 							+ "Your characther finds themselves locked in an old Dungeon.\n"
 							+ "The only way to escape is to find the legendary Pillars of Object Oriented Programming...\n\n"

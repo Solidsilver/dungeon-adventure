@@ -17,6 +17,7 @@ public class PlayerController implements Serializable {
     }
 
     public static Hero initHero() {
+        Menu.clearScreen();
         Menu heroSelection;// = new Menu("Choose a Character:", "Warrior", "Theif", "Sorceress");
         HeroFactory hf = new HeroFactory();
         heroSelection = new Menu("Choose a Character: ", hf.getOptions());
@@ -27,7 +28,7 @@ public class PlayerController implements Serializable {
     public int playTurn() {
         Menu mnu = new Menu("~~~Play~~~", "Change Room", "Inventory", "Stats", "Save Game", "Exit", "Developer Options");
         int choice = mnu.getSelection(3);
-
+        Menu.clearScreen();
         switch (choice) {
         case 0:
             changeRoom();
@@ -70,12 +71,14 @@ public class PlayerController implements Serializable {
         if (!moveOptions.isLast(choice)) {
             this.game.movePlayer(choice);
         }
+        //Menu.clearScreen();
     }
 
     private void inventory() {
         Menu mnu = new Menu(this.hero.getName() + "'s Inventory", this.hero.inventoryToString());
         mnu.add("Back");
         int choice = mnu.getSelection(2, false);
+        //Menu.clearScreen();
         if (!mnu.isLast(choice)) {
             this.hero.useItem(choice);
         }
