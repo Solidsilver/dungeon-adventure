@@ -7,67 +7,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import utils.*;
 
-/***
- * 
- * CSCD 327 Design Patterns Final homework project -  Team member contributions
-
-Andrew Sales worked on:  
-	HeroFactory
-	MonsterFactory
-	Attack package
-	o	IAttack interface
-	o	Attack class
-	o	CrushingBlow class
-	o	IncreaseHitPoint class
-	Character.heros Package
-	o	Hero Interface
-	o	HeroFactory class
-	o	Sorceress class
-	o	StuTheSteiner class
-	o	TomTheCapaul class
-	o	Warrior class
-	Character.monsters
-	o	Monster interface
-	o	MonsterFactory class
-	o	BrianTheCamp class
-	o	ChristhePeter class
-	o	Gremlin class
-	o	Ogre class
-	o	Skeleton class
-	UML objects for the above items
-	Worked on merging all UML objects into one file.
-	Game testing
-
-Jeff Howes worked on:
-	Dungeon.room package
-	o	Room class
-	o	RoomFactory class
-	DungeonFactory class
-	Print class 
-	Worked on Base code.
-	UML objects for the above items
-	Worked on merging all UML objects into one file.
-	Worked on managing project requirements were meet by the team.
-	Worked on implementing HealingPotion class, PickedupItem class, Pillar class, VisionPostion class.
-	Bug tracking
-	Game testing
-	Team member contributions tracking
-	HW projects Package construction
-
-Luke Mattfeld worked on:
-	Git hub usage support for the team.
-	High level package structure
-	DungeonAdventer Class
-	PlayerController class. 
-	Game Class
-	Dungeon Class
-	User Menu class
-	PickupItem Interface
-	Worked on implementing HealingPotion class, PickedupItem class, Pillar class, VisionPostion class.
-	Game testing
-	Bug fixing
- *
- */
 
 public class DungeonAdventure {
 	public static void main(String[] args) {

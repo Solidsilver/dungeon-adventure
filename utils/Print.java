@@ -56,8 +56,9 @@ public class Print {
 		for (y = upperLeftYCoord; y <= lowerRightYCoord; y++) {
 			
 			//print tops of each room, per line.
-			for(xT = upperLeftXCoord; xT <= lowerRightXCoord; xT++) {
-				System.out.print(y == 0 ? "* * " : "* - ");							
+			System.out.print(y == 0 ? "* * " : "* — "); 
+			for(xT = upperLeftXCoord; xT < lowerRightXCoord; xT++) {
+				System.out.print(y == 0 ? "* * " : "+ — ");							
 			}//end inner for loop				
 			System.out.println("*"); 
 			
@@ -79,7 +80,7 @@ public class Print {
 		//print bottom section of each room, per line.
 		//print tops of each room, per line.
 		for(xB = upperLeftXCoord; xB <= lowerRightXCoord; xB++) {
-			System.out.print(y == roomsArray[0].length-1 ? "* * " : "* - ");							
+			System.out.print(y == roomsArray[0].length-1 ? "* * " : "* * ");							
 		}//end inner for loop				
 		System.out.println("*");
 		
